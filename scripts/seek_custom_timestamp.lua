@@ -1,11 +1,21 @@
--- Lua script for MPV to seek to a custom timestamp
+-- Author: SevWren
+-- https://github.com/SevWren/MPV/tree/main
+
+-- Script seek_custom_timestamp.lua
+-- https://github.com/SevWren/MPV/blob/main/scripts/seek_custom_timestamp.lua
+
+-- Script seeks to a default of 1 minute 30 second custom timestamp and a custom time you can 
+-- Define in the seek_custom_timestamp.conf options file
+-- If no options file exists, custom time is set to 60 seconds on the keybinds are / and ?
+
+-- Inspired by https://github.com/occivink/mpv-scripts/blob/master/scripts/seek-to.lua
 
 local options = require 'mp.options'
 
 -- Define the options with default values
 local o = {
     minutes = 0,
-    seconds = 5,
+    seconds = 60,
     Customkey1 = "/",   -- Default key binding is /
     Customkey2 = "?"   -- Default key binding is ?
 }
@@ -37,3 +47,4 @@ mp.add_key_binding(o.Customkey2, "seek_to_90_seconds", seek_to_90_seconds)
 
 -- Register/Set the key binding from the configuration file
 mp.add_key_binding(o.Customkey1, "seek_to_custom_timestamp", seek_to_custom_timestamp)
+
