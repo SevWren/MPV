@@ -1,5 +1,5 @@
 # MPV
-Mpv Configs, Scripts, Script Configs etc
+Some of my Mpv Scripts & Script Configs etc
 
 
 # MPV Scripts
