@@ -20,3 +20,19 @@ Here is a list of Lua scripts included in this repository, each enhancing MPV's 
 - **ytdl_hook.lua**: Integrates `youtube-dl` or `yt-dlp` to stream online videos directly in MPV by pasting URLs.
 
 Each script can be installed and customized to extend the functionality of MPV to fit your workflow.
+
+# Script Configuration Files
+These are the configuration files (`.conf`) associated with the Lua scripts, allowing you to customize their behavior.
+- **SmartCopyPaste.conf**: Configuration for `SmartCopyPaste.lua`, specifying how URLs are handled and pasted into MPV.
+- **autoload.conf**: Options for `autoload.lua`, such as file types to include or exclude when loading a playlist automatically.
+- **encode_slice.conf**: Settings for encoding a specific slice or segment of the video, such as quality and format options.
+- **encode_webm.conf**: Configuration for `webm.lua`, defining parameters for creating WebM clips like bitrate, resolution, and audio settings.
+- **gallery-thumbgen.conf**: Configuration for `gallery-thumbgen.lua`, setting thumbnail generation options like output size and interval.
+- **gallery_worker.conf**: Supports `gallery-thumbgen.lua` with additional worker settings for batch thumbnail generation.
+- **gif.conf**: Configuration for creating GIFs from videos, including frame rate, resolution, and looping options.
+- **playlist_view.conf**: Options for `playlist-view.lua`, such as display style, color, and sort order for the playlist viewer.
+- **playlistmanager.conf**: Settings for `playlistmanager.lua`, like sorting preferences, hotkeys, and display formats.
+- **seek_custom_timestamp.conf**: Configurations for `seek_custom_timestamp.lua`, defining custom seek points and related key bindings.
+- **webm.conf**: Additional settings for WebM encoding, like codec choices, compression levels, and output location.
+
+Customize these files to tailor the behavior of each script according to your preferences.
