@@ -4,91 +4,35 @@ local msg = require("mp.msg")
 local utils = require("mp.utils")
 local mpopts = require("mp.options")
 local options = {
-	-- Defaults to shift+w
-	keybind = "W",
-	-- If empty, saves on the same directory of the playing video.
-	-- A starting "~" will be replaced by the home dir.
-	-- This field is delimited by double-square-brackets - [[ and ]] - instead of
-	-- quotes, because Windows users might run into a issue when using
-	-- backslashes as a path separator. Examples of valid inputs for this field
-	-- would be: [[]] (the default, empty value), [[C:\Users\John]] (on Windows),
-	-- and [[/home/john]] (on Unix-like systems eg. Linux).
-	-- The [[]] delimiter is not needed when using from a configuration file
-	-- in the script-opts folder.
-	output_directory = [[]],
-	run_detached = true,
-  --run_detached = false,
-	-- Template string for the output file
-	-- %f - Filename, with extension
-	-- %F - Filename, without extension
-	-- %T - Media title, if it exists, or filename, with extension (useful for some streams, such as YouTube).
-	-- %s, %e - Start and end time, with milliseconds
-	-- %S, %E - Start and end time, without milliseconds
-	-- %M - "-audio", if audio is enabled, empty otherwise
-	-- %R - "-(height)p", where height is the video's height, or scale_height, if it's enabled.
-	-- More specifiers are supported, see https://mpv.io/manual/master/#options-screenshot-template
-	-- Property expansion is supported (with %{} at top level, ${} when nested), see https://mpv.io/manual/master/#property-expansion
-	output_template = "%F-[%s-%e]%M",
-	-- Scale video to a certain height, keeping the aspect ratio. -1 disables it.
-	scale_height = -1,
-	-- Change the FPS of the output video, dropping or duplicating frames as needed.
-	-- -1 means the FPS will be unchanged from the source.
-	fps = -1,
-	-- Target filesize, in kB. This will be used to calculate the bitrate
-	-- used on the encode. If this is set to <= 0, the video bitrate will be set
-	-- to 0, which might enable constant quality modes, depending on the
-	-- video codec that's used (VP8 and VP9, for example).
-	-- target_filesize = 7500,
+  keybind = "W",
+  output_directory = [[]],
+  run_detached = true,
+  output_template = "%F-[%s-%e]%M",
+  scale_height = -1,
+  fps = -1,
   target_filesize = 10000,
-	-- If true, will use stricter flags to ensure the resulting file doesn't
-	-- overshoot the target filesize. Not recommended, as constrained quality
-	-- mode should work well, unless you're really having trouble hitting
-	-- the target size.
-	strict_filesize_constraint = false,
-	strict_bitrate_multiplier = 0.95,
-	-- In kilobits.
-	strict_audio_bitrate = 128,
-	-- Sets the output format, from a few predefined ones.
-	-- webm-vp9 (libvpx-vp9/libopus)
-	-- mp4 (h264/AAC)
-	-- mp4-nvenc (h264-NVENC/AAC)
-	-- raw (rawvideo/pcm_s16le).
-	-- mp3 (libmp3lame)
-	-- and gif
-	output_format = "mp4 (h264/AAC)",
-  --#output_format = "mp4-nvenc",
-	twopass = false,
-	-- If set, applies the video filters currently used on the playback to the encode.
-	apply_current_filters = false,
-	-- If set, writes the video's filename to the "Title" field on the metadata.
-	write_filename_on_metadata = false,
-	-- Set the number of encoding threads, for codecs libvpx and libvpx-vp9
-	libvpx_threads = 4,
-	additional_flags = "",
-	-- Constant Rate Factor (CRF). The value meaning and limits may change,
-	-- from codec to codec. Set to -1 to disable.
-	crf = -1,
-	-- Useful for flags that may impact output filesize, such as qmin, qmax etc
-	-- Won't be applied when strict_filesize_constraint is on.
-	non_strict_additional_flags = "cq-level=28",
-	-- Display the encode progress, in %. Requires run_detached to be disabled.
-	-- On Windows, it shows a cmd popup. "auto" will display progress on non-Windows platforms.
-	display_progress = "true",
-	-- The font size used in the menu. Isn't used for the notifications (started encode, finished encode etc)
-	font_size = 28,
-	margin = 10,
-	message_duration = 5,
-	-- gif dither mode, 0-5 for bayer w/ bayer_scale 0-5, 6 for paletteuse default (sierra2_4a)
-	gif_dither = 0,
-	-- Force square pixels on output video
-	-- Some players like recent Firefox versions display videos with non-square pixels with wrong aspect ratio
-	force_square_pixels = false,
+  strict_filesize_constraint = false,
+  strict_bitrate_multiplier = 0.95,
+  strict_audio_bitrate = 128,
+  output_format = "mp4 (h264/AAC)",
+  twopass = false,
+  apply_current_filters = false,
+  write_filename_on_metadata = false,
+  libvpx_threads = 4,
+  additional_flags = "",
+  crf = -1,
+  non_strict_additional_flags = "cq-level=28",
+  display_progress = "true",
+  font_size = 28,
+  margin = 10,
+  message_duration = 5,
+  gif_dither = 0,
+  force_square_pixels = false,
 }
 
 mpopts.read_options(options)
 local base64_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 
--- encoding
 function base64_encode(data)
     return ((data:gsub('.', function(x) 
         local r,b='',x:byte()
@@ -102,7 +46,6 @@ function base64_encode(data)
     end)..({ '', '==', '=' })[#data%3+1])
 end
 
--- decoding
 function base64_decode(data)
     data = string.gsub(data, '[^'..base64_chars..'=]', '')
     return (data:gsub('.', function(x)
@@ -1176,11 +1119,9 @@ do
   local _base_0 = {
     postCommandModifier = function(self, command, region, startTime, endTime)
       local new_command = { }
-      local start_ts = seconds_to_time_string(startTime, false, true)
-      local end_ts = seconds_to_time_string(endTime, false, true)
-      start_ts = start_ts:gsub(":", "\\\\:")
-      end_ts = end_ts:gsub(":", "\\\\:")
-      local cfilter = "[vid1]trim=start=" .. tostring(start_ts) .. ":end=" .. tostring(end_ts) .. "[vidtmp];"
+      -- Fix: Use raw seconds directly to prevent colon syntax errors
+      local cfilter = "[vid1]trim=start=" .. tostring(startTime) .. ":end=" .. tostring(endTime) .. "[vidtmp];"
+      
       if mp.get_property("deinterlace") == "yes" then
         cfilter = cfilter .. "[vidtmp]yadif=mode=1[vidtmp];"
       end
@@ -1222,7 +1163,7 @@ do
       end
       cfilter = cfilter .. "[vidtmp]split[topal][vidf];"
       cfilter = cfilter .. "[topal]palettegen[pal];"
-      cfilter = cfilter .. "[vidf]fifo[vidf];"
+      -- Removed fifo filter (your build lacks it)
       if options.gif_dither == 6 then
         cfilter = cfilter .. "[vidf][pal]paletteuse[vo]"
       else
