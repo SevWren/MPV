@@ -9,3 +9,10 @@ webm.lua.bak
 webm.lua.latest
 webm.lua.txt
 webm_fixed.lua
+
+*.back
+*.bak
+*.old
+*.zip
+*.rar
+*.7zip
