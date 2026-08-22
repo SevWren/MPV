@@ -12,16 +12,19 @@ local settings = {
   key_peek_at_playlist = "",
 
   -- dynamic keys
-  key_moveup = "UP",
-  key_movedown = "DOWN",
+  -- disabled for debugging conflicts 
+  
+  -- key_moveup = "UP",
+  -- key_movedown = "DOWN",
+  -- key_selectfile = "RIGHT LEFT",
+  -- key_playfile = "ENTER",
+  -- key_removefile = "BS",
+  
   key_movepageup = "PGUP",
   key_movepagedown = "PGDWN",
   key_movebegin = "HOME",
   key_moveend = "END",
-  key_selectfile = "RIGHT LEFT",
   key_unselectfile = "",
-  key_playfile = "ENTER",
-  key_removefile = "BS",
   key_closeplaylist = "ESC SHIFT+ENTER",
 
   -- extra functionality keys

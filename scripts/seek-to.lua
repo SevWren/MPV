@@ -109,13 +109,13 @@ function history_move(up)
 end
 
 local key_mappings = {
-    LEFT  = function() shift_cursor(true) show_seeker() end,
-    RIGHT = function() shift_cursor(false) show_seeker() end,
-    UP    = function() history_move(true) show_seeker() end,
-    DOWN  = function() history_move(false) show_seeker() end,
-    BS    = function() backspace() show_seeker() end,
-    ESC   = function() set_inactive() end,
-    ENTER = function() seek_to() set_inactive() end
+    -- LEFT  = function() shift_cursor(true) show_seeker() end,
+    -- RIGHT = function() shift_cursor(false) show_seeker() end,
+    -- UP    = function() history_move(true) show_seeker() end,
+    -- ENTER = function() seek_to() set_inactive() end
+    -- DOWN  = function() history_move(false) show_seeker() end,
+    -- BS    = function() backspace() show_seeker() end,
+    -- ESC   = function() set_inactive() end,
 }
 for i = 0, 9 do
     local func = function() change_number(i) show_seeker() end
