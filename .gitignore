@@ -17,3 +17,5 @@ webm_fixed.lua
 *.7zip
 
 .kilo
+gh_app_token.py
+sevwrenai.private-key.pem
