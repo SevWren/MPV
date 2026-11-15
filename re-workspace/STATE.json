@@ -11,11 +11,13 @@
     "G6": "PASS",
     "G7": "PASS",
     "G8": "PASS",
-    "G9": "in-progress"
+    "G9": "PASS"
   },
   "budget_used": 180000,
   "budget_total": 10000000,
   "hash": "3f454dc0ca030b591d659f7405a3ddfdf7585e5b5eb4cd5b3a573b4151b33214",
   "hash_verified_final": true,
-  "next_action": "git commit and push"
+  "status": "COMPLETE",
+  "pushed_to": "https://github.com/SevWren/MPV.git",
+  "commit": "4825d55"
 }
