@@ -1,0 +1,13 @@
+--- a/scripts/webm.lua
++++ b/scripts/webm.lua
+@@ -1776,8 +1776,8 @@ encode = function(region, startTime, endTime)
+       if options.strict_filesize_constraint then
+         local type = format.videoCodec ~= "" and "ovc" or "oac"
+         append(command, {
+-          "--" .. tostring(type) .. "opts-add=minrate=" .. tostring(bitrate) .. "k",
+-          "--" .. tostring(type) .. "opts-add=maxrate=" .. tostring(bitrate) .. "k"
++          "--" .. tostring(type) .. "opts-add=minrate=" .. tostring(video_bitrate) .. "k",
++          "--" .. tostring(type) .. "opts-add=maxrate=" .. tostring(video_bitrate) .. "k"
+         })
+       end
+     else
