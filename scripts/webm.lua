@@ -1706,6 +1706,12 @@ encode = function(region, startTime, endTime)
   end
   local command = {
     "mpv",
+    "--no-config",
+    "--load-scripts=no",
+    "--keep-open=no",
+    "--loop-playlist=no",
+    "--hwdec=no",
+    "--save-position-on-quit=no",
     path,
     "--start=" .. seconds_to_time_string(startTime, false, true),
     "--end=" .. seconds_to_time_string(endTime, false, true),
@@ -1788,11 +1794,19 @@ encode = function(region, startTime, endTime)
     end
   end
   for token in string.gmatch(options.additional_flags, "[^%s]+") do
-    command[#command + 1] = token
+    if token:sub(1, 2) == "--" then
+      command[#command + 1] = token
+    else
+      msg.warn("Skipping invalid additional_flag (missing -- prefix): " .. tostring(token))
+    end
   end
   if not options.strict_filesize_constraint then
     for token in string.gmatch(options.non_strict_additional_flags, "[^%s]+") do
-      command[#command + 1] = token
+      if token:sub(1, 2) == "--" then
+        command[#command + 1] = token
+      else
+        msg.warn("Skipping invalid non_strict_additional_flag (missing -- prefix): " .. tostring(token))
+      end
     end
     if options.crf >= 0 then
       append(command, {
