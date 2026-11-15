@@ -1,0 +1,4 @@
+{"id":"SEG-07-R-001","segment":"SEG-07","type":"algorithm","summary":"GIF postCommandModifier builds a two-step lavfi filtergraph: palettegen followed by paletteuse for palette-optimized GIF","lines":[1120,1214],"confidence":1.0}
+{"id":"SEG-07-R-002","segment":"SEG-07","type":"functional","summary":"GIF uses raw seconds (not HH:MM:SS) for trim=start:end to avoid colon syntax issues in filter graph","lines":[1123,1123],"confidence":1.0,"quote":"trim=start=\" .. tostring(startTime)"}
+{"id":"SEG-07-R-003","segment":"SEG-07","type":"edge-case","summary":"Unknown --vf-add=lavfi- prefixed filters not in the handled list are silently dropped from the GIF filter chain","lines":[1128,1165],"confidence":0.85}
+{"id":"SEG-07-R-004","segment":"SEG-07","type":"functional","summary":"GIF format has acceptsBitrate=false; bitrate calculation in encode() is skipped","lines":[1035,1042],"confidence":1.0}

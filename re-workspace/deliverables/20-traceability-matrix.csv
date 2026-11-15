@@ -1,0 +1,71 @@
+claim_id,segment,lines,type,summary,deliverable_reference
+SEG-00-R-001,SEG-00,"36,62",functional,base64_encode/decode are GLOBAL functions,01-provenance.md 05-api-reference/utility-functions.md
+SEG-00-R-002,SEG-00,"68,74",security,test_set_options no validation,12-security.md FIND-006
+SEG-00-R-003,SEG-00,"25,25",functional,display_progress stored as string,04-configuration-reference.md
+SEG-00-R-004,SEG-00,"63,66",functional,emit_event sends webm-prefixed script-messages,11-process-and-filesystem.md
+SEG-00-R-005,SEG-00,"33,33",functional,mpopts.read_options called at startup,04-configuration-reference.md
+SEG-01-R-001,SEG-01,"283,308",security,run_subprocess_popen uses io.popen,12-security.md 11-process.md
+SEG-01-R-002,SEG-01,"272,308",functional,Two subprocess execution paths,06-encoding-pipeline.md 11-process.md
+SEG-01-R-003,SEG-01,"93,106",functional,seconds_to_time_string returns unknown for negative,05-api-reference/utility-functions.md 07-algorithms.md
+SEG-01-R-004,SEG-01,"283,301",algorithm,shell_escape POSIX/Windows quoting,07-algorithms.md
+SEG-01-R-005,SEG-01,"123,173",functional,expand_properties conditional templates,05-api-reference/utility-functions.md 07-algorithms.md
+SEG-01-R-006,SEG-01,"303,308",edge-case,run_subprocess_popen appends 2>&1,06-encoding-pipeline.md
+SEG-02-R-001,SEG-02,"341,425",functional,get_video_dimensions cached,02-architecture.md 10-data-flow.md
+SEG-02-R-002,SEG-02,"346,349",edge-case,get_video_dimensions returns nil if no video,19-open-questions.md
+SEG-02-R-003,SEG-02,"355,358",algorithm,90-degree rotation handled by swapping w/h,07-algorithms.md
+SEG-02-R-004,SEG-02,"431,448",functional,monitor_dimensions registers 11 property observers,08-mpv-integration-surface.md
+SEG-02-R-005,SEG-02,"395,408",algorithm,split_scaling computes pixel start/end,07-algorithms.md
+SEG-03-R-001,SEG-03,"489,504",functional,VideoPoint uses -1/-1 as sentinel,05-api-reference/page-classes.md
+SEG-03-R-002,SEG-03,"510,512",functional,Region.is_valid requires all fields > -1,05-api-reference/page-classes.md
+SEG-03-R-003,SEG-03,"470,478",edge-case,VideoPoint.set_from_screen crashes if no video,13-defect-register.md
+SEG-03-R-004,SEG-03,"542,562",functional,make_fullscreen_region returns Region or nil,05-api-reference/utility-functions.md
+SEG-04-R-001,SEG-04,"618,621",defect,get_duration undefined variable,FIND-004 13-defect-register.md
+SEG-04-R-002,SEG-04,"655,665",algorithm,VP8 logfile 144-byte records,07-algorithms.md
+SEG-04-R-003,SEG-04,"736,749",functional,vp8_patch_logfile normalizes durations,06-encoding-pipeline.md 07-algorithms.md
+SEG-04-R-004,SEG-04,"573,575",edge-case,read_double returns 0 for denormals,07-algorithms.md
+SEG-04-R-005,SEG-04,"708,724",edge-case,corrupt logfile silently truncated,19-open-questions.md
+SEG-05-R-001,SEG-05,"746,806",functional,Format base class interface,05-api-reference/format-class.md
+SEG-05-R-002,SEG-05,"807,931",functional,WebmVP8 supportsTwopass=true,05-api-reference/format-class.md 06-encoding-pipeline.md
+SEG-05-R-003,SEG-05,"745,745",functional,formats table registry,02-architecture.md
+SEG-06-R-001,SEG-06,"932,1114",functional,5 format classes registered,05-api-reference/format-class.md
+SEG-06-R-002,SEG-06,"17,17",defect,output_format default mismatch,FIND-003 13-defect-register.md
+SEG-06-R-003,SEG-06,"1079,1086",functional,MP3 audio-only format,05-api-reference/format-class.md
+SEG-06-R-004,SEG-06,"938,943",functional,WebmVP9 thread option,05-api-reference/format-class.md
+SEG-07-R-001,SEG-07,"1120,1214",algorithm,GIF palette filtergraph,07-algorithms.md 05-api-reference/format-class.md
+SEG-07-R-002,SEG-07,"1123,1123",functional,GIF uses raw seconds for trim,07-algorithms.md
+SEG-07-R-003,SEG-07,"1128,1165",edge-case,Unknown lavfi filters dropped by GIF,19-open-questions.md
+SEG-07-R-004,SEG-07,"1035,1042",functional,GIF acceptsBitrate=false,05-api-reference/format-class.md
+SEG-08-R-001,SEG-08,"1365,1366",defect,startEncode empty table append,FIND-005 13-defect-register.md
+SEG-08-R-002,SEG-08,"1221,1230",functional,Page uses add_forced_key_binding,08-mpv-integration-surface.md 09-state-machines.md
+SEG-08-R-003,SEG-08,"1376,1379",functional,startEncode returns true only on End of file,06-encoding-pipeline.md
+SEG-08-R-004,SEG-08,"1339,1352",functional,parseLine matches time-pos and Exiting,06-encoding-pipeline.md
+SEG-08-R-005,SEG-08,"1226,1227",mpv-api,forced keybinds override all mpv handlers,08-mpv-integration-surface.md
+SEG-09-R-001,SEG-09,"1657,1671",algorithm,calculate_bitrate formula,07-algorithms.md 06-encoding-pipeline.md
+SEG-09-R-002,SEG-09,"1472,1499",functional,amix for multiple audio tracks,06-encoding-pipeline.md
+SEG-09-R-003,SEG-09,"1563,1575",functional,get_playback_options propagates 8 properties,06-encoding-pipeline.md
+SEG-09-R-004,SEG-09,"1590,1595",security,length-prefix metadata injection protection,12-security.md
+SEG-09-R-005,SEG-09,"1529,1529",edge-case,string/number coercion in eq filter,19-open-questions.md
+SEG-10-R-001,SEG-10,"1779,1780",defect,undefined bitrate variable in strict mode,FIND-001 13-defect-register.md 17-maintenance.md
+SEG-10-R-002,SEG-10,"1856,1860",defect,temp file leak on run_detached,FIND-007 13-defect-register.md
+SEG-10-R-003,SEG-10,"1856,1884",functional,Three execution mode dispatch,06-encoding-pipeline.md 11-process.md
+SEG-10-R-004,SEG-10,"1790,1796",security,additional_flags can override --o= path,12-security.md
+SEG-10-R-005,SEG-10,"1681,1692",functional,HLS cache dump and time reset,06-encoding-pipeline.md 11-process.md
+SEG-10-R-006,SEG-10,"1818,1884",functional,emit_event encode-started/finished,11-process.md
+SEG-11-R-001,SEG-11,"1933,1950",algorithm,CropPage four-rectangle letterbox,07-algorithms.md 09-state-machines.md
+SEG-11-R-002,SEG-11,"1974,2010",functional,CropPage keybinds,09-state-machines.md
+SEG-11-R-003,SEG-11,"1923,1932",functional,cancel/finish callbacks,09-state-machines.md
+SEG-11-R-004,SEG-11,"1927,1932",edge-case,zero-dimension crop is_valid,13-defect-register.md 19-open-questions.md
+SEG-12-R-001,SEG-12,"2047,2210",functional,Option types bool/int/list,05-api-reference/page-classes.md
+SEG-12-R-002,SEG-12,"2109,2163",functional,Option getValue/getDisplayValue,05-api-reference/page-classes.md
+SEG-12-R-003,SEG-12,"2180,2186",functional,optVisible with callback,09-state-machines.md
+SEG-12-R-004,SEG-12,"2079,2108",edge-case,bool leftKey/rightKey identical,05-api-reference/page-classes.md
+SEG-13-R-001,SEG-13,"2363,2385",defect,formats[raw] nil crash,FIND-002 13-defect-register.md 17-maintenance.md
+SEG-13-R-002,SEG-13,"2245,2253",functional,confirmOpts applies to global options,04-configuration-reference.md
+SEG-13-R-003,SEG-13,"2458,2460",functional,gif_dither conditional visibility,04-configuration-reference.md
+SEG-13-R-004,SEG-13,"2467,2510",functional,EncodeOptionsPage keybinds,09-state-machines.md
+SEG-14-R-001,SEG-14,"2544,2611",functional,PreviewPage saves/restores properties,09-state-machines.md
+SEG-14-R-002,SEG-14,"2568,2574",edge-case,PreviewPage crash leaves properties modified,13-defect-register.md
+SEG-15-R-001,SEG-15,"2838,2855",functional,Bootstrap key binding and event,02-architecture.md 08-mpv-integration-surface.md
+SEG-15-R-002,SEG-15,"2755,2814",functional,MainPage state machine,09-state-machines.md
+SEG-15-R-003,SEG-15,"2735,2749",functional,MainPage.encode validates times,06-encoding-pipeline.md
+SEG-15-R-004,SEG-15,"2840,2848",edge-case,keybind static at startup,04-configuration-reference.md

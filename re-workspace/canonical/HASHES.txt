@@ -1,0 +1,4 @@
+sha256:3f454dc0ca030b591d659f7405a3ddfdf7585e5b5eb4cd5b3a573b4151b33214  original/webm.lua  (82074 bytes, 2856 lines, LF-only)
+sha256:3f454dc0ca030b591d659f7405a3ddfdf7585e5b5eb4cd5b3a573b4151b33214  canonical/webm.lf.lua  (identical - no CRLF present in original)
+
+Recorded: 2026-11-15

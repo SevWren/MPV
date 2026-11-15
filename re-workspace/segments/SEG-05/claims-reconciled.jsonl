@@ -1,0 +1,3 @@
+{"id":"SEG-05-R-001","segment":"SEG-05","type":"functional","summary":"Format base class defines the interface: getPreFilters, getPostFilters, getFlags, getCodecFlags, postCommandModifier","lines":[746,806],"confidence":1.0}
+{"id":"SEG-05-R-002","segment":"SEG-05","type":"functional","summary":"WebmVP8 is the only format with supportsTwopass=true; its postCommandModifier patches the VP8 first-pass logfile","lines":[807,931],"confidence":1.0}
+{"id":"SEG-05-R-003","segment":"SEG-05","type":"functional","summary":"Format instances are registered in the global formats table keyed by string ID (e.g. 'webm-vp8')","lines":[745,745],"confidence":1.0}

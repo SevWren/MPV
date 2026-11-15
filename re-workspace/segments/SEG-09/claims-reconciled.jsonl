@@ -1,0 +1,5 @@
+{"id":"SEG-09-R-001","segment":"SEG-09","type":"algorithm","summary":"calculate_bitrate: total_kilobits = target_filesize * 8; strict constraint reserves strict_audio_bitrate*length for audio; video gets remainder","lines":[1657,1671],"confidence":1.0}
+{"id":"SEG-09-R-002","segment":"SEG-09","type":"functional","summary":"append_audio_tracks builds amix lavfi-complex filter for multiple internal audio tracks","lines":[1472,1499],"confidence":1.0}
+{"id":"SEG-09-R-003","segment":"SEG-09","type":"functional","summary":"get_playback_options propagates 8 mpv properties to ffmpeg; sub-ass-force-style is commented out","lines":[1563,1575],"confidence":1.0}
+{"id":"SEG-09-R-004","segment":"SEG-09","type":"security","summary":"get_metadata_flags uses length-prefix format (%N%value) to safely embed filenames in command line without injection risk","lines":[1590,1595],"confidence":0.9}
+{"id":"SEG-09-R-005","segment":"SEG-09","type":"edge-case","summary":"get_contrast_brightness_and_saturation_filters compares string property values to 0 numerically via Lua coercion; may fail for non-numeric values","lines":[1529,1529],"confidence":0.8}

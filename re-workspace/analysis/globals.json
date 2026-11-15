@@ -1,0 +1,110 @@
+[
+  {
+    "name": "VideoPoint",
+    "value_preview": "_class_0",
+    "line": 504,
+    "raw": "  VideoPoint = _class_0"
+  },
+  {
+    "name": "Region",
+    "value_preview": "_class_0",
+    "line": 539,
+    "raw": "  Region = _class_0"
+  },
+  {
+    "name": "FirstpassStats",
+    "value_preview": "_class_0",
+    "line": 705,
+    "raw": "  FirstpassStats = _class_0"
+  },
+  {
+    "name": "Format",
+    "value_preview": "_class_0",
+    "line": 794,
+    "raw": "  Format = _class_0"
+  },
+  {
+    "name": "RawVideo",
+    "value_preview": "_class_0",
+    "line": 861,
+    "raw": "  RawVideo = _class_0"
+  },
+  {
+    "name": "WebmVP8",
+    "value_preview": "_class_0",
+    "line": 930,
+    "raw": "  WebmVP8 = _class_0"
+  },
+  {
+    "name": "WebmVP9",
+    "value_preview": "_class_0",
+    "line": 980,
+    "raw": "  WebmVP9 = _class_0"
+  },
+  {
+    "name": "MP4",
+    "value_preview": "_class_0",
+    "line": 1024,
+    "raw": "  MP4 = _class_0"
+  },
+  {
+    "name": "MP4NVENC",
+    "value_preview": "_class_0",
+    "line": 1068,
+    "raw": "  MP4NVENC = _class_0"
+  },
+  {
+    "name": "MP3",
+    "value_preview": "_class_0",
+    "line": 1112,
+    "raw": "  MP3 = _class_0"
+  },
+  {
+    "name": "GIF",
+    "value_preview": "_class_0",
+    "line": 1214,
+    "raw": "  GIF = _class_0"
+  },
+  {
+    "name": "Page",
+    "value_preview": "_class_0",
+    "line": 1321,
+    "raw": "  Page = _class_0"
+  },
+  {
+    "name": "EncodeWithProgress",
+    "value_preview": "_class_0",
+    "line": 1417,
+    "raw": "  EncodeWithProgress = _class_0"
+  },
+  {
+    "name": "CropPage",
+    "value_preview": "_class_0",
+    "line": 2045,
+    "raw": "  CropPage = _class_0"
+  },
+  {
+    "name": "Option",
+    "value_preview": "_class_0",
+    "line": 2209,
+    "raw": "  Option = _class_0"
+  },
+  {
+    "name": "EncodeOptionsPage",
+    "value_preview": "_class_0",
+    "line": 2537,
+    "raw": "  EncodeOptionsPage = _class_0"
+  },
+  {
+    "name": "PreviewPage",
+    "value_preview": "_class_0",
+    "line": 2637,
+    "raw": "  PreviewPage = _class_0"
+  },
+  {
+    "name": "MainPage",
+    "value_preview": "_class_0",
+    "line": 2836,
+    "raw": "  MainPage = _class_0"
+  }
+]

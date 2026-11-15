@@ -1,0 +1,4 @@
+{"id":"SEG-06-R-001","segment":"SEG-06","type":"functional","summary":"5 format classes registered: webm-vp9, mp4, mp4-nvenc, mp3, plus webm-vp8 from SEG-05","lines":[932,1114],"confidence":1.0}
+{"id":"SEG-06-R-002","segment":"SEG-06","type":"defect","summary":"options.output_format default 'mp4 (h264/AAC)' does not match any formats table key; would cause formats[options.output_format] to return nil unless EncodeOptionsPage initializes it correctly","lines":[17,17],"confidence":0.8}
+{"id":"SEG-06-R-003","segment":"SEG-06","type":"functional","summary":"MP3 format has empty videoCodec, making it audio-only; getCodecFlags omits --ovc flag","lines":[1079,1086],"confidence":1.0}
+{"id":"SEG-06-R-004","segment":"SEG-06","type":"functional","summary":"WebmVP9 overrides getFlags to add libvpx_threads option; supportsTwopass=false","lines":[938,943],"confidence":1.0}

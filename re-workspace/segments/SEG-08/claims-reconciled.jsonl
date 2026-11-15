@@ -1,0 +1,5 @@
+{"id":"SEG-08-R-001","segment":"SEG-08","type":"defect","summary":"startEncode appends an empty table to copy_command_line (append(copy_command_line, {})) - vestigial no-op artifact","lines":[1365,1366],"confidence":1.0,"quote":"append(copy_command_line, {\\n      })"}
+{"id":"SEG-08-R-002","segment":"SEG-08","type":"functional","summary":"Page.add_keybinds uses mp.add_forced_key_binding with repeatable=true for all keys","lines":[1221,1230],"confidence":1.0}
+{"id":"SEG-08-R-003","segment":"SEG-08","type":"functional","summary":"EncodeWithProgress.startEncode returns true only when finishedReason == 'End of file'; any abnormal exit returns false","lines":[1376,1379],"confidence":1.0}
+{"id":"SEG-08-R-004","segment":"SEG-08","type":"functional","summary":"EncodeWithProgress parses stderr for 'Encode time-pos: X' and 'Exiting... (reason)' patterns; all other stderr lines silently ignored","lines":[1339,1352],"confidence":1.0}
+{"id":"SEG-08-R-005","segment":"SEG-08","type":"mpv-api","summary":"Page uses mp.add_forced_key_binding (not mp.add_key_binding) - forced bindings override all other key handlers","lines":[1226,1227],"confidence":1.0}

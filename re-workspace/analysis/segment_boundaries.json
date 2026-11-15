@@ -1,0 +1,153 @@
+{
+  "verified_segments": [
+    {
+      "id": "SEG-00",
+      "lines": [1, 74],
+      "description": "Module requires, options table, base64 encode/decode, emit_event, test_set_options (mpv-webm-set-options handler)",
+      "key_symbols": ["options", "base64_encode", "base64_decode", "emit_event", "test_set_options"],
+      "boundary_evidence": "L1: local mp = require('mp'); L74: mp.register_script_message('mpv-webm-set-options', test_set_options)",
+      "matches_seed": true,
+      "notes": "base64_encode/decode are GLOBAL functions (not local). test_set_options is the JSON IPC handler registered as a script message."
+    },
+    {
+      "id": "SEG-01",
+      "lines": [75, 338],
+      "description": "Utility layer: bold, message, append, time formatting, filename expansion, path utilities, subprocess wrappers, shell_escape, geometry helpers",
+      "key_symbols": ["bold", "message", "append", "seconds_to_time_string", "seconds_to_path_element", "file_exists", "expand_properties", "format_filename", "parse_directory", "trim", "get_null_path", "run_subprocess", "shell_escape", "run_subprocess_popen", "calculate_scale_factor", "should_display_progress", "reverse", "get_pass_logfile_path"],
+      "boundary_evidence": "L75: local bold; L338: local dimensions_changed = true (start of geometry)",
+      "matches_seed": true,
+      "notes": "Contains two subprocess execution paths: run_subprocess (mp.command_native) and run_subprocess_popen (io.popen). shell_escape builds argv arrays."
+    },
+    {
+      "id": "SEG-02",
+      "lines": [339, 465],
+      "description": "Video geometry: get_video_dimensions, set_dimensions_changed, monitor_dimensions, clamp, clamp_point",
+      "key_symbols": ["get_video_dimensions", "set_dimensions_changed", "monitor_dimensions", "clamp", "clamp_point", "_video_dimensions"],
+      "boundary_evidence": "L338: dimensions_changed = true; L465: end of clamp_point; L466: local VideoPoint do",
+      "matches_seed": true,
+      "notes": "Contains complex panscan/zoom coordinate math. Uses mp.get_osd_size, video-out-params, keepaspect, panscan, video-zoom, etc."
+    },
+    {
+      "id": "SEG-03",
+      "lines": [466, 562],
+      "description": "VideoPoint class (MoonScript-generated), Region class, make_fullscreen_region",
+      "key_symbols": ["VideoPoint", "Region", "make_fullscreen_region"],
+      "boundary_evidence": "L466: local VideoPoint do; L542: make_fullscreen_region; L562: end of make_fullscreen_region",
+      "matches_seed": true,
+      "notes": "Two MoonScript classes. VideoPoint maps screen coords to video coords. Region holds crop rectangle with is_valid/set_from_points."
+    },
+    {
+      "id": "SEG-04",
+      "lines": [563, 744],
+      "description": "IEEE-754 double encode/decode, FirstpassStats class and logfile I/O",
+      "key_symbols": ["read_double", "write_double", "FirstpassStats", "read_logfile_into_stats_array", "write_stats_array_to_logfile", "vp8_patch_logfile"],
+      "boundary_evidence": "L563: read_double; L618: FirstpassStats class start (get_duration); L744: end of vp8_patch_logfile",
+      "matches_seed": true,
+      "notes": "Manual IEEE-754 implementation for 2-pass VP8 logfile parsing. read_double extracts sign/mantissa/exponent from byte array."
+    },
+    {
+      "id": "SEG-05",
+      "lines": [745, 931],
+      "description": "formats registry, Format base class, WebmVP8 class",
+      "key_symbols": ["formats", "Format", "WebmVP8"],
+      "boundary_evidence": "L745: local formats = {}; L746: local Format do; L807: WebmVP8 class; L931: WebmVP8 = _class_0 end",
+      "matches_seed": true,
+      "notes": "Format base class defines getPreFilters, getPostFilters, getFlags, getCodecFlags, postCommandModifier interface. WebmVP8 is first concrete format."
+    },
+    {
+      "id": "SEG-06",
+      "lines": [932, 1113],
+      "description": "WebmVP9, MP4 (h264/AAC), MP4 (h265/AAC), EBU R128, MP3 format classes",
+      "key_symbols": ["WebmVP9", "MP4H264", "MP4H265", "EBUR128", "MP3"],
+      "boundary_evidence": "L932: formats['webm-vp8']=WebmVP8(); L933: local WebmVP9 do; L1113: MP3=_class_0 end",
+      "matches_seed": true,
+      "notes": "5 format classes. EBU R128 is audio-normalization format. MP3 is audio-only. Each extends Format base."
+    },
+    {
+      "id": "SEG-07",
+      "lines": [1114, 1216],
+      "description": "GIF format class",
+      "key_symbols": ["GIF"],
+      "boundary_evidence": "L1114: formats['mp3']=MP3(); L1115: local GIF do; L1215: GIF=_class_0 end; L1216: formats['gif']=GIF()",
+      "matches_seed": true,
+      "notes": "GIF has complex postCommandModifier that reassembles ffmpeg filter graph for palette generation. Uses [vid1] lavfi stream labels."
+    },
+    {
+      "id": "SEG-08",
+      "lines": [1217, 1419],
+      "description": "Page base class, EncodeWithProgress class",
+      "key_symbols": ["Page", "EncodeWithProgress"],
+      "boundary_evidence": "L1217: local Page do; L1329: EncodeWithProgress class; L1418: EncodeWithProgress=_class_0 end",
+      "matches_seed": true,
+      "notes": "Page is the OSD UI base class. add_keybinds/remove_keybinds use mp.add_forced_key_binding. EncodeWithProgress parses ffmpeg stderr progress output."
+    },
+    {
+      "id": "SEG-09",
+      "lines": [1420, 1672],
+      "description": "Track selection, command builders, bitrate calculation",
+      "key_symbols": ["get_active_tracks", "filter_tracks_supported_by_format", "append_track", "append_audio_tracks", "get_scale_filters", "get_fps_filters", "get_contrast_brightness_and_saturation_filters", "append_property", "append_list_options", "get_playback_options", "get_speed_flags", "get_metadata_flags", "apply_current_filters", "get_video_filters", "get_video_encode_flags", "calculate_bitrate"],
+      "boundary_evidence": "L1419: local get_active_tracks; L1672: end of calculate_bitrate",
+      "matches_seed": true,
+      "notes": "calculate_bitrate converts filesize+length to video/audio bitrate. apply_current_filters reads mpv's current vf chain. additional_flags split by whitespace."
+    },
+    {
+      "id": "SEG-10",
+      "lines": [1673, 1885],
+      "description": "find_path (HLS cache handling) and encode() main function",
+      "key_symbols": ["find_path", "encode"],
+      "boundary_evidence": "L1673: local find_path; L1697: local encode; L1885: end of encode",
+      "matches_seed": true,
+      "notes": "encode() is the core orchestration function. Handles 2-pass, GIF palette, progress display, file naming, temp cleanup. find_path handles HLS streams via dump_cache."
+    },
+    {
+      "id": "SEG-11",
+      "lines": [1886, 2046],
+      "description": "CropPage class (interactive crop UI)",
+      "key_symbols": ["CropPage"],
+      "boundary_evidence": "L1886: local CropPage do; L2046: CropPage=_class_0 end",
+      "matches_seed": true,
+      "notes": "CropPage extends Page. Draws crop rectangle on OSD using ASS draw commands. Handles mouse/key input for crop point selection."
+    },
+    {
+      "id": "SEG-12",
+      "lines": [2047, 2210],
+      "description": "Option widget class (bool/int/list options)",
+      "key_symbols": ["Option"],
+      "boundary_evidence": "L2047: local Option do; L2210: Option=_class_0 end",
+      "matches_seed": true,
+      "notes": "Option handles three types: bool, int, list. hasPrevious/hasNext/leftKey/rightKey control value navigation. getDisplayValue formats value for display."
+    },
+    {
+      "id": "SEG-13",
+      "lines": [2211, 2538],
+      "description": "EncodeOptionsPage class (options UI page)",
+      "key_symbols": ["EncodeOptionsPage"],
+      "boundary_evidence": "L2211: local EncodeOptionsPage do; L2538: EncodeOptionsPage=_class_0 end",
+      "matches_seed": true,
+      "notes": "Largest class. __init at L2279 builds the full options menu with ~20 Option widgets. draw() renders them as ASS text overlay."
+    },
+    {
+      "id": "SEG-14",
+      "lines": [2539, 2638],
+      "description": "PreviewPage class",
+      "key_symbols": ["PreviewPage"],
+      "boundary_evidence": "L2539: local PreviewPage do; L2638: PreviewPage=_class_0 end",
+      "matches_seed": true,
+      "notes": "PreviewPage temporarily modifies vf property to add crop filter for live preview. dispose() removes it."
+    },
+    {
+      "id": "SEG-15",
+      "lines": [2639, 2856],
+      "description": "MainPage class and bootstrap",
+      "key_symbols": ["MainPage", "mainPage"],
+      "boundary_evidence": "L2639: local MainPage do; L2837: MainPage=_class_0 end; L2838-2856: bootstrap",
+      "matches_seed": true,
+      "notes": "Bootstrap at L2838: monitor_dimensions(); L2839: mainPage=MainPage(); L2840: mp.add_key_binding for 'W' key; L2849-2855: mp.register_event('file-loaded'). Last line is L2855."
+    }
+  ],
+  "total_segments": 16,
+  "all_boundaries_match_seed": true,
+  "discrepancies": [
+    "Source has 2857 lines per Python wc (2856 per wc -l; difference may be trailing newline). All content confirmed in L1-L2855 with L2856 being trailing newline."
+  ]
+}

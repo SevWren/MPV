@@ -1,0 +1,4 @@
+{"id":"SEG-12-R-001","segment":"SEG-12","type":"functional","summary":"Option widget supports three types: bool (toggle), int (bounded/unbounded numeric), list (enumeration with display names)","lines":[2047,2210],"confidence":1.0}
+{"id":"SEG-12-R-002","segment":"SEG-12","type":"functional","summary":"List type getValue returns possibleValues[i][1] (the key); getDisplayValue returns possibleValues[i][2] (display name) or key if no display name","lines":[2109,2163],"confidence":1.0}
+{"id":"SEG-12-R-003","segment":"SEG-12","type":"functional","summary":"optVisible uses visibleCheckFn callback to conditionally hide options; enables format-conditional visibility","lines":[2180,2186],"confidence":1.0}
+{"id":"SEG-12-R-004","segment":"SEG-12","type":"edge-case","summary":"Bool leftKey and rightKey both toggle value identically; no directional behavior for booleans","lines":[2079,2108],"confidence":1.0}

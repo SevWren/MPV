@@ -1,0 +1,173 @@
+{
+  "options_table_line": 6,
+  "options": [
+    {
+      "name": "keybind",
+      "default": "\"W\"",
+      "type": "string",
+      "comment": "",
+      "line": 7
+    },
+    {
+      "name": "output_directory",
+      "default": "[[]]",
+      "type": "unknown",
+      "comment": "",
+      "line": 8
+    },
+    {
+      "name": "run_detached",
+      "default": "true",
+      "type": "boolean",
+      "comment": "",
+      "line": 9
+    },
+    {
+      "name": "output_template",
+      "default": "\"%F-[%s-%e]%M\"",
+      "type": "string",
+      "comment": "",
+      "line": 10
+    },
+    {
+      "name": "scale_height",
+      "default": "-1",
+      "type": "number",
+      "comment": "",
+      "line": 11
+    },
+    {
+      "name": "fps",
+      "default": "-1",
+      "type": "number",
+      "comment": "",
+      "line": 12
+    },
+    {
+      "name": "target_filesize",
+      "default": "10000",
+      "type": "number",
+      "comment": "",
+      "line": 13
+    },
+    {
+      "name": "strict_filesize_constraint",
+      "default": "false",
+      "type": "boolean",
+      "comment": "",
+      "line": 14
+    },
+    {
+      "name": "strict_bitrate_multiplier",
+      "default": "0.95",
+      "type": "number",
+      "comment": "",
+      "line": 15
+    },
+    {
+      "name": "strict_audio_bitrate",
+      "default": "128",
+      "type": "number",
+      "comment": "",
+      "line": 16
+    },
+    {
+      "name": "output_format",
+      "default": "\"mp4 (h264/AAC)\"",
+      "type": "string",
+      "comment": "",
+      "line": 17
+    },
+    {
+      "name": "twopass",
+      "default": "false",
+      "type": "boolean",
+      "comment": "",
+      "line": 18
+    },
+    {
+      "name": "apply_current_filters",
+      "default": "false",
+      "type": "boolean",
+      "comment": "",
+      "line": 19
+    },
+    {
+      "name": "write_filename_on_metadata",
+      "default": "false",
+      "type": "boolean",
+      "comment": "",
+      "line": 20
+    },
+    {
+      "name": "libvpx_threads",
+      "default": "4",
+      "type": "number",
+      "comment": "",
+      "line": 21
+    },
+    {
+      "name": "additional_flags",
+      "default": "\"\"",
+      "type": "string",
+      "comment": "",
+      "line": 22
+    },
+    {
+      "name": "crf",
+      "default": "-1",
+      "type": "number",
+      "comment": "",
+      "line": 23
+    },
+    {
+      "name": "non_strict_additional_flags",
+      "default": "\"cq-level=28\"",
+      "type": "string",
+      "comment": "",
+      "line": 24
+    },
+    {
+      "name": "display_progress",
+      "default": "\"true\"",
+      "type": "string",
+      "comment": "",
+      "line": 25
+    },
+    {
+      "name": "font_size",
+      "default": "28",
+      "type": "number",
+      "comment": "",
+      "line": 26
+    },
+    {
+      "name": "margin",
+      "default": "10",
+      "type": "number",
+      "comment": "",
+      "line": 27
+    },
+    {
+      "name": "message_duration",
+      "default": "5",
+      "type": "number",
+      "comment": "",
+      "line": 28
+    },
+    {
+      "name": "gif_dither",
+      "default": "0",
+      "type": "number",
+      "comment": "",
+      "line": 29
+    },
+    {
+      "name": "force_square_pixels",
+      "default": "false",
+      "type": "boolean",
+      "comment": "",
+      "line": 30
+    }
+  ]
+}

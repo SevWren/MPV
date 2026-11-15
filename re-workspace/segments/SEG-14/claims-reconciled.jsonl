@@ -1,0 +1,2 @@
+{"id":"SEG-14-R-001","segment":"SEG-14","type":"functional","summary":"PreviewPage saves vf/time-pos/pause at construction, adds crop+sub filters in prepare(), and restores all in dispose()","lines":[2591,2574],"confidence":1.0}
+{"id":"SEG-14-R-002","segment":"SEG-14","type":"edge-case","summary":"If mpv exits or crashes while PreviewPage is active, dispose() does not run and vf/time-pos/pause are left modified","lines":[2568,2574],"confidence":0.9}

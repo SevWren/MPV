@@ -1,0 +1,4 @@
+{"id":"SEG-15-R-001","segment":"SEG-15","type":"functional","summary":"Bootstrap binds 'W' key (options.keybind) via mp.add_key_binding and registers 'file-loaded' event to auto-set times","lines":[2838,2855],"confidence":1.0}
+{"id":"SEG-15-R-002","segment":"SEG-15","type":"functional","summary":"MainPage is the UI state machine root; c/1/2/o/p/e/ESC navigate to crop/settime/options/preview/encode/idle states","lines":[2755,2814],"confidence":1.0}
+{"id":"SEG-15-R-003","segment":"SEG-15","type":"functional","summary":"MainPage.encode validates startTime/endTime (non-negative, start<end) before calling encode(); nil region is allowed","lines":[2735,2749],"confidence":1.0}
+{"id":"SEG-15-R-004","segment":"SEG-15","type":"edge-case","summary":"keybind is bound at startup; changing options.keybind via IPC after load does not update the key binding","lines":[2840,2848],"confidence":1.0}

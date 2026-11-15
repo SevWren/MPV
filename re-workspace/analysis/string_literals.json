@@ -1,0 +1,2502 @@
+[
+  {
+    "value": "mp",
+    "line": 1,
+    "type": "double"
+  },
+  {
+    "value": "mp.assdraw",
+    "line": 2,
+    "type": "double"
+  },
+  {
+    "value": "mp.msg",
+    "line": 3,
+    "type": "double"
+  },
+  {
+    "value": "mp.utils",
+    "line": 4,
+    "type": "double"
+  },
+  {
+    "value": "mp.options",
+    "line": 5,
+    "type": "double"
+  },
+  {
+    "value": "W",
+    "line": 7,
+    "type": "double"
+  },
+  {
+    "value": "%F-[%s-%e]%M",
+    "line": 10,
+    "type": "double"
+  },
+  {
+    "value": "mp4 (h264/AAC)",
+    "line": 17,
+    "type": "double"
+  },
+  {
+    "value": "cq-level=28",
+    "line": 24,
+    "type": "double"
+  },
+  {
+    "value": "true",
+    "line": 25,
+    "type": "double"
+  },
+  {
+    "value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
+    "line": 34,
+    "type": "single"
+  },
+  {
+    "value": ".",
+    "line": 37,
+    "type": "single"
+  },
+  {
+    "value": "1",
+    "line": 39,
+    "type": "single"
+  },
+  {
+    "value": "0",
+    "line": 39,
+    "type": "single"
+  },
+  {
+    "value": "0000",
+    "line": 41,
+    "type": "single"
+  },
+  {
+    "value": "%d%d%d?%d?%d?%d?",
+    "line": 41,
+    "type": "single"
+  },
+  {
+    "value": "1",
+    "line": 44,
+    "type": "single"
+  },
+  {
+    "value": "==",
+    "line": 46,
+    "type": "single"
+  },
+  {
+    "value": "=",
+    "line": 46,
+    "type": "single"
+  },
+  {
+    "value": "[^",
+    "line": 50,
+    "type": "single"
+  },
+  {
+    "value": "=]",
+    "line": 50,
+    "type": "single"
+  },
+  {
+    "value": ".",
+    "line": 51,
+    "type": "single"
+  },
+  {
+    "value": "=",
+    "line": 52,
+    "type": "single"
+  },
+  {
+    "value": "1",
+    "line": 54,
+    "type": "single"
+  },
+  {
+    "value": "0",
+    "line": 54,
+    "type": "single"
+  },
+  {
+    "value": "%d%d%d?%d?%d?%d?%d?%d?",
+    "line": 56,
+    "type": "single"
+  },
+  {
+    "value": "1",
+    "line": 59,
+    "type": "single"
+  },
+  {
+    "value": "script-message",
+    "line": 65,
+    "type": "double"
+  },
+  {
+    "value": "webm-",
+    "line": 65,
+    "type": "double"
+  },
+  {
+    "value": "mpv-webm-set-options",
+    "line": 74,
+    "type": "double"
+  },
+  {
+    "value": "{\\\\b1}",
+    "line": 77,
+    "type": "double"
+  },
+  {
+    "value": "{\\\\b0}",
+    "line": 77,
+    "type": "double"
+  },
+  {
+    "value": "osd-ass-cc/0",
+    "line": 81,
+    "type": "double"
+  },
+  {
+    "value": "unknown",
+    "line": 95,
+    "type": "double"
+  },
+  {
+    "value": ".%03d",
+    "line": 99,
+    "type": "double"
+  },
+  {
+    "value": "%02d:%02d%s",
+    "line": 101,
+    "type": "double"
+  },
+  {
+    "value": "%d:%s",
+    "line": 103,
+    "type": "double"
+  },
+  {
+    "value": ":",
+    "line": 111,
+    "type": "double"
+  },
+  {
+    "value": ".",
+    "line": 111,
+    "type": "double"
+  },
+  {
+    "value": "$",
+    "line": 125,
+    "type": "double"
+  },
+  {
+    "value": "%",
+    "line": 127,
+    "type": "double"
+  },
+  {
+    "value": "{([?!]?)(=?)([^}:]*)(:?)([^}]*)(}*)}",
+    "line": 127,
+    "type": "double"
+  },
+  {
+    "value": "=",
+    "line": 133,
+    "type": "double"
+  },
+  {
+    "value": "(.-)==(.*)",
+    "line": 137,
+    "type": "double"
+  },
+  {
+    "value": ":",
+    "line": 142,
+    "type": "double"
+  },
+  {
+    "value": "(error)",
+    "line": 145,
+    "type": "double"
+  },
+  {
+    "value": "?",
+    "line": 148,
+    "type": "double"
+  },
+  {
+    "value": "%",
+    "line": 154,
+    "type": "double"
+  },
+  {
+    "value": "!",
+    "line": 155,
+    "type": "double"
+  },
+  {
+    "value": ":",
+    "line": 164,
+    "type": "double"
+  },
+  {
+    "value": "%",
+    "line": 166,
+    "type": "double"
+  },
+  {
+    "value": "{",
+    "line": 166,
+    "type": "double"
+  },
+  {
+    "value": "%W",
+    "line": 166,
+    "type": "double"
+  },
+  {
+    "value": "%%%1",
+    "line": 166,
+    "type": "double"
+  },
+  {
+    "value": ":",
+    "line": 166,
+    "type": "double"
+  },
+  {
+    "value": "%W",
+    "line": 166,
+    "type": "double"
+  },
+  {
+    "value": "%%%1",
+    "line": 166,
+    "type": "double"
+  },
+  {
+    "value": "}",
+    "line": 166,
+    "type": "double"
+  },
+  {
+    "value": "%",
+    "line": 169,
+    "type": "double"
+  },
+  {
+    "value": "{",
+    "line": 169,
+    "type": "double"
+  },
+  {
+    "value": "%W",
+    "line": 169,
+    "type": "double"
+  },
+  {
+    "value": "%%%1",
+    "line": 169,
+    "type": "double"
+  },
+  {
+    "value": "}",
+    "line": 169,
+    "type": "double"
+  },
+  {
+    "value": "%%mp",
+    "line": 178,
+    "type": "double"
+  },
+  {
+    "value": "%%mH.%%mM.%%mS",
+    "line": 178,
+    "type": "double"
+  },
+  {
+    "value": "%%mP",
+    "line": 179,
+    "type": "double"
+  },
+  {
+    "value": "%%mH.%%mM.%%mS.%%mT",
+    "line": 179,
+    "type": "double"
+  },
+  {
+    "value": "%%p",
+    "line": 180,
+    "type": "double"
+  },
+  {
+    "value": "%%wH.%%wM.%%wS",
+    "line": 180,
+    "type": "double"
+  },
+  {
+    "value": "%%P",
+    "line": 181,
+    "type": "double"
+  },
+  {
+    "value": "%%wH.%%wM.%%wS.%%wT",
+    "line": 181,
+    "type": "double"
+  },
+  {
+    "value": "%%wH",
+    "line": 184,
+    "type": "double"
+  },
+  {
+    "value": "%02d",
+    "line": 184,
+    "type": "double"
+  },
+  {
+    "value": "%%wh",
+    "line": 185,
+    "type": "double"
+  },
+  {
+    "value": "%d",
+    "line": 185,
+    "type": "double"
+  },
+  {
+    "value": "%%wM",
+    "line": 186,
+    "type": "double"
+  },
+  {
+    "value": "%02d",
+    "line": 186,
+    "type": "double"
+  },
+  {
+    "value": "%%wm",
+    "line": 187,
+    "type": "double"
+  },
+  {
+    "value": "%d",
+    "line": 187,
+    "type": "double"
+  },
+  {
+    "value": "%%wS",
+    "line": 188,
+    "type": "double"
+  },
+  {
+    "value": "%02d",
+    "line": 188,
+    "type": "double"
+  },
+  {
+    "value": "%%ws",
+    "line": 189,
+    "type": "double"
+  },
+  {
+    "value": "%d",
+    "line": 189,
+    "type": "double"
+  },
+  {
+    "value": "%%wf",
+    "line": 190,
+    "type": "double"
+  },
+  {
+    "value": "%s",
+    "line": 190,
+    "type": "double"
+  },
+  {
+    "value": "%%wT",
+    "line": 191,
+    "type": "double"
+  },
+  {
+    "value": "%.3f",
+    "line": 191,
+    "type": "double"
+  },
+  {
+    "value": "%%mH",
+    "line": 192,
+    "type": "double"
+  },
+  {
+    "value": "%02d",
+    "line": 192,
+    "type": "double"
+  },
+  {
+    "value": "%%mh",
+    "line": 193,
+    "type": "double"
+  },
+  {
+    "value": "%d",
+    "line": 193,
+    "type": "double"
+  },
+  {
+    "value": "%%mM",
+    "line": 194,
+    "type": "double"
+  },
+  {
+    "value": "%02d",
+    "line": 194,
+    "type": "double"
+  },
+  {
+    "value": "%%mm",
+    "line": 195,
+    "type": "double"
+  },
+  {
+    "value": "%d",
+    "line": 195,
+    "type": "double"
+  },
+  {
+    "value": "%%mS",
+    "line": 196,
+    "type": "double"
+  },
+  {
+    "value": "%02d",
+    "line": 196,
+    "type": "double"
+  },
+  {
+    "value": "%%ms",
+    "line": 197,
+    "type": "double"
+  },
+  {
+    "value": "%d",
+    "line": 197,
+    "type": "double"
+  },
+  {
+    "value": "%%mf",
+    "line": 198,
+    "type": "double"
+  },
+  {
+    "value": "%s",
+    "line": 198,
+    "type": "double"
+  },
+  {
+    "value": "%%mT",
+    "line": 199,
+    "type": "double"
+  },
+  {
+    "value": "%.3f",
+    "line": 199,
+    "type": "double"
+  },
+  {
+    "value": "%%f",
+    "line": 200,
+    "type": "double"
+  },
+  {
+    "value": "filename",
+    "line": 200,
+    "type": "double"
+  },
+  {
+    "value": "%%F",
+    "line": 201,
+    "type": "double"
+  },
+  {
+    "value": "filename/no-ext",
+    "line": 201,
+    "type": "double"
+  },
+  {
+    "value": "%%s",
+    "line": 202,
+    "type": "double"
+  },
+  {
+    "value": "%%S",
+    "line": 203,
+    "type": "double"
+  },
+  {
+    "value": "%%e",
+    "line": 204,
+    "type": "double"
+  },
+  {
+    "value": "%%E",
+    "line": 205,
+    "type": "double"
+  },
+  {
+    "value": "%%T",
+    "line": 206,
+    "type": "double"
+  },
+  {
+    "value": "media-title",
+    "line": 206,
+    "type": "double"
+  },
+  {
+    "value": "%%M",
+    "line": 207,
+    "type": "double"
+  },
+  {
+    "value": "aid",
+    "line": 207,
+    "type": "single"
+  },
+  {
+    "value": "mute",
+    "line": 207,
+    "type": "single"
+  },
+  {
+    "value": "-audio",
+    "line": 207,
+    "type": "single"
+  },
+  {
+    "value": "%%R",
+    "line": 208,
+    "type": "double"
+  },
+  {
+    "value": "-",
+    "line": 208,
+    "type": "double"
+  },
+  {
+    "value": "p",
+    "line": 208,
+    "type": "double"
+  },
+  {
+    "value": "-",
+    "line": 208,
+    "type": "double"
+  },
+  {
+    "value": "p",
+    "line": 208,
+    "type": "double"
+  },
+  {
+    "value": "height",
+    "line": 208,
+    "type": "single"
+  },
+  {
+    "value": "%%t%%",
+    "line": 209,
+    "type": "double"
+  },
+  {
+    "value": "%%",
+    "line": 209,
+    "type": "double"
+  },
+  {
+    "value": "demuxer-via-network",
+    "line": 220,
+    "type": "double"
+  },
+  {
+    "value": "%%X{([^}]*)}",
+    "line": 222,
+    "type": "double"
+  },
+  {
+    "value": "%1",
+    "line": 222,
+    "type": "double"
+  },
+  {
+    "value": "%%x",
+    "line": 223,
+    "type": "double"
+  },
+  {
+    "value": "stream-open-filename",
+    "line": 225,
+    "type": "double"
+  },
+  {
+    "value": "filename",
+    "line": 225,
+    "type": "double"
+  },
+  {
+    "value": "%W",
+    "line": 225,
+    "type": "double"
+  },
+  {
+    "value": "%%%1",
+    "line": 225,
+    "type": "double"
+  },
+  {
+    "value": "$",
+    "line": 225,
+    "type": "double"
+  },
+  {
+    "value": "%%X{[^}]*}",
+    "line": 227,
+    "type": "double"
+  },
+  {
+    "value": "%%x",
+    "line": 228,
+    "type": "double"
+  },
+  {
+    "value": "%",
+    "line": 230,
+    "type": "double"
+  },
+  {
+    "value": "%%t([aAbBcCdDeFgGhHIjmMnprRStTuUVwWxXyYzZ])",
+    "line": 231,
+    "type": "double"
+  },
+  {
+    "value": "%%t",
+    "line": 233,
+    "type": "double"
+  },
+  {
+    "value": "%",
+    "line": 233,
+    "type": "double"
+  },
+  {
+    "value": "[<>:\\\"/\\\\|?*]",
+    "line": 236,
+    "type": "double"
+  },
+  {
+    "value": ".",
+    "line": 237,
+    "type": "double"
+  },
+  {
+    "value": "HOME",
+    "line": 241,
+    "type": "double"
+  },
+  {
+    "value": "USERPROFILE",
+    "line": 243,
+    "type": "double"
+  },
+  {
+    "value": "HOMEDRIVE",
+    "line": 246,
+    "type": "double"
+  },
+  {
+    "value": "HOMEPATH",
+    "line": 247,
+    "type": "double"
+  },
+  {
+    "value": "Couldn't find home dir.",
+    "line": 251,
+    "type": "double"
+  },
+  {
+    "value": "^~",
+    "line": 256,
+    "type": "double"
+  },
+  {
+    "value": "table",
+    "line": 259,
+    "type": "double"
+  },
+  {
+    "value": "string",
+    "line": 259,
+    "type": "double"
+  },
+  {
+    "value": "\\\\",
+    "line": 259,
+    "type": "double"
+  },
+  {
+    "value": "^%s*(.-)%s*$",
+    "line": 262,
+    "type": "double"
+  },
+  {
+    "value": "/dev/null",
+    "line": 266,
+    "type": "double"
+  },
+  {
+    "value": "/dev/null",
+    "line": 267,
+    "type": "double"
+  },
+  {
+    "value": "NUL",
+    "line": 269,
+    "type": "double"
+  },
+  {
+    "value": "Command stdout: ",
+    "line": 274,
+    "type": "double"
+  },
+  {
+    "value": "Command failed! Reason: ",
+    "line": 277,
+    "type": "double"
+  },
+  {
+    "value": " Killed by us? ",
+    "line": 277,
+    "type": "double"
+  },
+  {
+    "value": "yes",
+    "line": 277,
+    "type": "double"
+  },
+  {
+    "value": "no",
+    "line": 277,
+    "type": "double"
+  },
+  {
+    "value": "[^A-Za-z0-9_/:=-]",
+    "line": 287,
+    "type": "double"
+  },
+  {
+    "value": "' .. string.gsub(s, '",
+    "line": 289,
+    "type": "double"
+  },
+  {
+    "value": "\\\\",
+    "line": 289,
+    "type": "double"
+  },
+  {
+    "value": "') .. '",
+    "line": 289,
+    "type": "double"
+  },
+  {
+    "value": "\"",
+    "line": 289,
+    "type": "single"
+  },
+  {
+    "value": "\"",
+    "line": 289,
+    "type": "single"
+  },
+  {
+    "value": "\"\\\\\"\"",
+    "line": 289,
+    "type": "single"
+  },
+  {
+    "value": "\"",
+    "line": 289,
+    "type": "single"
+  },
+  {
+    "value": "'",
+    "line": 291,
+    "type": "double"
+  },
+  {
+    "value": "'",
+    "line": 291,
+    "type": "double"
+  },
+  {
+    "value": "'\\\\''",
+    "line": 291,
+    "type": "double"
+  },
+  {
+    "value": "'",
+    "line": 291,
+    "type": "double"
+  },
+  {
+    "value": "\" .. string.gsub(s, \"",
+    "line": 291,
+    "type": "single"
+  },
+  {
+    "value": "\\\\",
+    "line": 291,
+    "type": "single"
+  },
+  {
+    "value": "\") .. \"",
+    "line": 291,
+    "type": "single"
+  },
+  {
+    "value": " ",
+    "line": 296,
+    "type": "double"
+  },
+  {
+    "value": "' .. concat .. '",
+    "line": 298,
+    "type": "double"
+  },
+  {
+    "value": "\"",
+    "line": 298,
+    "type": "single"
+  },
+  {
+    "value": "\"",
+    "line": 298,
+    "type": "single"
+  },
+  {
+    "value": " 2>&1",
+    "line": 305,
+    "type": "double"
+  },
+  {
+    "value": "run_subprocess_popen: running ",
+    "line": 306,
+    "type": "double"
+  },
+  {
+    "value": "auto",
+    "line": 317,
+    "type": "double"
+  },
+  {
+    "value": "-video-pass1.log",
+    "line": 336,
+    "type": "double"
+  },
+  {
+    "value": "video-out-params",
+    "line": 345,
+    "type": "double"
+  },
+  {
+    "value": "keepaspect",
+    "line": 350,
+    "type": "double"
+  },
+  {
+    "value": "w",
+    "line": 351,
+    "type": "double"
+  },
+  {
+    "value": "h",
+    "line": 352,
+    "type": "double"
+  },
+  {
+    "value": "dw",
+    "line": 353,
+    "type": "double"
+  },
+  {
+    "value": "dh",
+    "line": 354,
+    "type": "double"
+  },
+  {
+    "value": "video-rotate",
+    "line": 355,
+    "type": "double"
+  },
+  {
+    "value": "video-unscaled",
+    "line": 366,
+    "type": "double"
+  },
+  {
+    "value": "panscan",
+    "line": 367,
+    "type": "double"
+  },
+  {
+    "value": "downscale-big",
+    "line": 385,
+    "type": "double"
+  },
+  {
+    "value": "video-zoom",
+    "line": 409,
+    "type": "double"
+  },
+  {
+    "value": "video-align-x",
+    "line": 410,
+    "type": "double"
+  },
+  {
+    "value": "video-pan-x",
+    "line": 411,
+    "type": "double"
+  },
+  {
+    "value": "video-align-y",
+    "line": 413,
+    "type": "double"
+  },
+  {
+    "value": "video-pan-y",
+    "line": 414,
+    "type": "double"
+  },
+  {
+    "value": "keepaspect",
+    "line": 433,
+    "type": "double"
+  },
+  {
+    "value": "video-out-params",
+    "line": 434,
+    "type": "double"
+  },
+  {
+    "value": "video-unscaled",
+    "line": 435,
+    "type": "double"
+  },
+  {
+    "value": "panscan",
+    "line": 436,
+    "type": "double"
+  },
+  {
+    "value": "video-zoom",
+    "line": 437,
+    "type": "double"
+  },
+  {
+    "value": "video-align-x",
+    "line": 438,
+    "type": "double"
+  },
+  {
+    "value": "video-pan-x",
+    "line": 439,
+    "type": "double"
+  },
+  {
+    "value": "video-align-y",
+    "line": 440,
+    "type": "double"
+  },
+  {
+    "value": "video-pan-y",
+    "line": 441,
+    "type": "double"
+  },
+  {
+    "value": "osd-width",
+    "line": 442,
+    "type": "double"
+  },
+  {
+    "value": "osd-height",
+    "line": 443,
+    "type": "double"
+  },
+  {
+    "value": "native",
+    "line": 446,
+    "type": "double"
+  },
+  {
+    "value": "VideoPoint",
+    "line": 494,
+    "type": "double"
+  },
+  {
+    "value": "Region",
+    "line": 529,
+    "type": "double"
+  },
+  {
+    "value": "FirstpassStats",
+    "line": 644,
+    "type": "double"
+  },
+  {
+    "value": "rb",
+    "line": 709,
+    "type": "double"
+  },
+  {
+    "value": "wb",
+    "line": 726,
+    "type": "double"
+  },
+  {
+    "value": "--ovc=",
+    "line": 762,
+    "type": "double"
+  },
+  {
+    "value": "--oac=",
+    "line": 765,
+    "type": "double"
+  },
+  {
+    "value": "Basic",
+    "line": 776,
+    "type": "double"
+  },
+  {
+    "value": "Format",
+    "line": 784,
+    "type": "double"
+  },
+  {
+    "value": "colormatrix",
+    "line": 802,
+    "type": "double"
+  },
+  {
+    "value": "bt.601",
+    "line": 804,
+    "type": "double"
+  },
+  {
+    "value": "bt601",
+    "line": 805,
+    "type": "double"
+  },
+  {
+    "value": "bt.709",
+    "line": 806,
+    "type": "double"
+  },
+  {
+    "value": "bt709",
+    "line": 807,
+    "type": "double"
+  },
+  {
+    "value": "bt.2020",
+    "line": 808,
+    "type": "double"
+  },
+  {
+    "value": "bt2020",
+    "line": 809,
+    "type": "double"
+  },
+  {
+    "value": "smpte-240m",
+    "line": 810,
+    "type": "double"
+  },
+  {
+    "value": "smpte240m",
+    "line": 811,
+    "type": "double"
+  },
+  {
+    "value": "Warning, unknown colorspace ",
+    "line": 813,
+    "type": "double"
+  },
+  {
+    "value": " detected, using bt.601.",
+    "line": 813,
+    "type": "double"
+  },
+  {
+    "value": "bt601",
+    "line": 814,
+    "type": "double"
+  },
+  {
+    "value": "format=yuv444p16",
+    "line": 819,
+    "type": "double"
+  },
+  {
+    "value": "lavfi-scale=in_color_matrix=",
+    "line": 820,
+    "type": "double"
+  },
+  {
+    "value": "format=bgr24",
+    "line": 821,
+    "type": "double"
+  },
+  {
+    "value": "Raw",
+    "line": 829,
+    "type": "double"
+  },
+  {
+    "value": "rawvideo",
+    "line": 831,
+    "type": "double"
+  },
+  {
+    "value": "pcm_s16le",
+    "line": 832,
+    "type": "double"
+  },
+  {
+    "value": "avi",
+    "line": 833,
+    "type": "double"
+  },
+  {
+    "value": "RawVideo",
+    "line": 837,
+    "type": "double"
+  },
+  {
+    "value": "__parent",
+    "line": 843,
+    "type": "double"
+  },
+  {
+    "value": "raw",
+    "line": 863,
+    "type": "double"
+  },
+  {
+    "value": "bt.709",
+    "line": 871,
+    "type": "double"
+  },
+  {
+    "value": "bt709",
+    "line": 871,
+    "type": "double"
+  },
+  {
+    "value": "bt.2020",
+    "line": 872,
+    "type": "double"
+  },
+  {
+    "value": "bt2020",
+    "line": 872,
+    "type": "double"
+  },
+  {
+    "value": "smpte-240m",
+    "line": 873,
+    "type": "double"
+  },
+  {
+    "value": "smpte240m",
+    "line": 873,
+    "type": "double"
+  },
+  {
+    "value": "video-params/colormatrix",
+    "line": 876,
+    "type": "double"
+  },
+  {
+    "value": "lavfi-colormatrix=",
+    "line": 879,
+    "type": "double"
+  },
+  {
+    "value": ":bt601",
+    "line": 879,
+    "type": "double"
+  },
+  {
+    "value": "--ovcopts-add=threads=",
+    "line": 886,
+    "type": "double"
+  },
+  {
+    "value": "--ovcopts-add=auto-alt-ref=1",
+    "line": 887,
+    "type": "double"
+  },
+  {
+    "value": "--ovcopts-add=lag-in-frames=25",
+    "line": 888,
+    "type": "double"
+  },
+  {
+    "value": "--ovcopts-add=quality=good",
+    "line": 889,
+    "type": "double"
+  },
+  {
+    "value": "--ovcopts-add=cpu-used=0",
+    "line": 890,
+    "type": "double"
+  },
+  {
+    "value": "WebM",
+    "line": 898,
+    "type": "double"
+  },
+  {
+    "value": "libvpx",
+    "line": 900,
+    "type": "double"
+  },
+  {
+    "value": "libvorbis",
+    "line": 901,
+    "type": "double"
+  },
+  {
+    "value": "webm",
+    "line": 902,
+    "type": "double"
+  },
+  {
+    "value": "WebmVP8",
+    "line": 906,
+    "type": "double"
+  },
+  {
+    "value": "__parent",
+    "line": 912,
+    "type": "double"
+  },
+  {
+    "value": "webm-vp8",
+    "line": 932,
+    "type": "double"
+  },
+  {
+    "value": "--ovcopts-add=threads=",
+    "line": 940,
+    "type": "double"
+  },
+  {
+    "value": "WebM (VP9)",
+    "line": 948,
+    "type": "double"
+  },
+  {
+    "value": "libvpx-vp9",
+    "line": 950,
+    "type": "double"
+  },
+  {
+    "value": "libopus",
+    "line": 951,
+    "type": "double"
+  },
+  {
+    "value": "webm",
+    "line": 952,
+    "type": "double"
+  },
+  {
+    "value": "WebmVP9",
+    "line": 956,
+    "type": "double"
+  },
+  {
+    "value": "__parent",
+    "line": 962,
+    "type": "double"
+  },
+  {
+    "value": "webm-vp9",
+    "line": 982,
+    "type": "double"
+  },
+  {
+    "value": "MP4 (h264/AAC)",
+    "line": 992,
+    "type": "double"
+  },
+  {
+    "value": "libx264",
+    "line": 994,
+    "type": "double"
+  },
+  {
+    "value": "aac",
+    "line": 995,
+    "type": "double"
+  },
+  {
+    "value": "mp4",
+    "line": 996,
+    "type": "double"
+  },
+  {
+    "value": "MP4",
+    "line": 1000,
+    "type": "double"
+  },
+  {
+    "value": "__parent",
+    "line": 1006,
+    "type": "double"
+  },
+  {
+    "value": "mp4",
+    "line": 1026,
+    "type": "double"
+  },
+  {
+    "value": "MP4 (h264-NVENC/AAC)",
+    "line": 1036,
+    "type": "double"
+  },
+  {
+    "value": "h264_nvenc",
+    "line": 1038,
+    "type": "double"
+  },
+  {
+    "value": "aac",
+    "line": 1039,
+    "type": "double"
+  },
+  {
+    "value": "mp4",
+    "line": 1040,
+    "type": "double"
+  },
+  {
+    "value": "MP4NVENC",
+    "line": 1044,
+    "type": "double"
+  },
+  {
+    "value": "__parent",
+    "line": 1050,
+    "type": "double"
+  },
+  {
+    "value": "mp4-nvenc",
+    "line": 1070,
+    "type": "double"
+  },
+  {
+    "value": "MP3 (libmp3lame)",
+    "line": 1080,
+    "type": "double"
+  },
+  {
+    "value": "libmp3lame",
+    "line": 1083,
+    "type": "double"
+  },
+  {
+    "value": "mp3",
+    "line": 1084,
+    "type": "double"
+  },
+  {
+    "value": "MP3",
+    "line": 1088,
+    "type": "double"
+  },
+  {
+    "value": "__parent",
+    "line": 1094,
+    "type": "double"
+  },
+  {
+    "value": "mp3",
+    "line": 1114,
+    "type": "double"
+  },
+  {
+    "value": "[vid1]trim=start=",
+    "line": 1123,
+    "type": "double"
+  },
+  {
+    "value": ":end=",
+    "line": 1123,
+    "type": "double"
+  },
+  {
+    "value": "[vidtmp];",
+    "line": 1123,
+    "type": "double"
+  },
+  {
+    "value": "deinterlace",
+    "line": 1125,
+    "type": "double"
+  },
+  {
+    "value": "yes",
+    "line": 1125,
+    "type": "double"
+  },
+  {
+    "value": "[vidtmp]yadif=mode=1[vidtmp];",
+    "line": 1126,
+    "type": "double"
+  },
+  {
+    "value": "^%-%-vf%-add=lavfi%-scale",
+    "line": 1131,
+    "type": "double"
+  },
+  {
+    "value": "^%-%-vf%-add=lavfi%-crop",
+    "line": 1131,
+    "type": "double"
+  },
+  {
+    "value": "^%-%-vf%-add=fps",
+    "line": 1131,
+    "type": "double"
+  },
+  {
+    "value": "^%-%-vf%-add=lavfi%-eq",
+    "line": 1131,
+    "type": "double"
+  },
+  {
+    "value": "^%-%-vf%-add=",
+    "line": 1132,
+    "type": "double"
+  },
+  {
+    "value": "^lavfi%-",
+    "line": 1132,
+    "type": "double"
+  },
+  {
+    "value": "[vidtmp]",
+    "line": 1133,
+    "type": "double"
+  },
+  {
+    "value": "[vidtmp];",
+    "line": 1133,
+    "type": "double"
+  },
+  {
+    "value": "^%-%-video%-rotate=90",
+    "line": 1135,
+    "type": "double"
+  },
+  {
+    "value": "[vidtmp]transpose=1[vidtmp];",
+    "line": 1136,
+    "type": "double"
+  },
+  {
+    "value": "^%-%-video%-rotate=270",
+    "line": 1138,
+    "type": "double"
+  },
+  {
+    "value": "[vidtmp]transpose=2[vidtmp];",
+    "line": 1139,
+    "type": "double"
+  },
+  {
+    "value": "^%-%-video%-rotate=180",
+    "line": 1141,
+    "type": "double"
+  },
+  {
+    "value": "[vidtmp]transpose=1[vidtmp];[vidtmp]transpose=1[vidtmp];",
+    "line": 1142,
+    "type": "double"
+  },
+  {
+    "value": "^%-%-deinterlace=",
+    "line": 1144,
+    "type": "double"
+  },
+  {
+    "value": "[vidtmp]split[topal][vidf];",
+    "line": 1164,
+    "type": "double"
+  },
+  {
+    "value": "[topal]palettegen[pal];",
+    "line": 1165,
+    "type": "double"
+  },
+  {
+    "value": "[vidf][pal]paletteuse[vo]",
+    "line": 1168,
+    "type": "double"
+  },
+  {
+    "value": "[vidf][pal]paletteuse=dither=bayer:bayer_scale=",
+    "line": 1170,
+    "type": "double"
+  },
+  {
+    "value": ":diff_mode=rectangle[vo]",
+    "line": 1170,
+    "type": "double"
+  },
+  {
+    "value": "--lavfi-complex=",
+    "line": 1173,
+    "type": "double"
+  },
+  {
+    "value": "GIF",
+    "line": 1182,
+    "type": "double"
+  },
+  {
+    "value": "gif",
+    "line": 1184,
+    "type": "double"
+  },
+  {
+    "value": "gif",
+    "line": 1186,
+    "type": "double"
+  },
+  {
+    "value": "GIF",
+    "line": 1190,
+    "type": "double"
+  },
+  {
+    "value": "__parent",
+    "line": 1196,
+    "type": "double"
+  },
+  {
+    "value": "gif",
+    "line": 1216,
+    "type": "double"
+  },
+  {
+    "value": "keepaspect",
+    "line": 1244,
+    "type": "double"
+  },
+  {
+    "value": "video-out-params",
+    "line": 1245,
+    "type": "double"
+  },
+  {
+    "value": "video-unscaled",
+    "line": 1246,
+    "type": "double"
+  },
+  {
+    "value": "panscan",
+    "line": 1247,
+    "type": "double"
+  },
+  {
+    "value": "video-zoom",
+    "line": 1248,
+    "type": "double"
+  },
+  {
+    "value": "video-align-x",
+    "line": 1249,
+    "type": "double"
+  },
+  {
+    "value": "video-pan-x",
+    "line": 1250,
+    "type": "double"
+  },
+  {
+    "value": "video-align-y",
+    "line": 1251,
+    "type": "double"
+  },
+  {
+    "value": "video-pan-y",
+    "line": 1252,
+    "type": "double"
+  },
+  {
+    "value": "osd-width",
+    "line": 1253,
+    "type": "double"
+  },
+  {
+    "value": "osd-height",
+    "line": 1254,
+    "type": "double"
+  },
+  {
+    "value": "native",
+    "line": 1258,
+    "type": "double"
+  },
+  {
+    "value": "{\\\\an7}",
+    "line": 1302,
+    "type": "double"
+  },
+  {
+    "value": "{\\\\fs",
+    "line": 1304,
+    "type": "double"
+  },
+  {
+    "value": "}",
+    "line": 1304,
+    "type": "double"
+  },
+  {
+    "value": "Page",
+    "line": 1311,
+    "type": "double"
+  },
+  {
+    "value": "%d%%",
+    "line": 1331,
+    "type": "double"
+  },
+  {
+    "value": "Encoding (",
+    "line": 1336,
+    "type": "double"
+  },
+  {
+    "value": ")\\\\N",
+    "line": 1336,
+    "type": "double"
+  },
+  {
+    "value": "Encode time[-]pos: ([0-9.]+)",
+    "line": 1340,
+    "type": "double"
+  },
+  {
+    "value": "Exiting... [(]([%a ]+)[)]",
+    "line": 1341,
+    "type": "double"
+  },
+  {
+    "value": "%q",
+    "line": 1370,
+    "type": "single"
+  },
+  {
+    "value": "End of file",
+    "line": 1376,
+    "type": "double"
+  },
+  {
+    "value": "EncodeWithProgress",
+    "line": 1393,
+    "type": "double"
+  },
+  {
+    "value": "__parent",
+    "line": 1399,
+    "type": "double"
+  },
+  {
+    "value": "mute",
+    "line": 1423,
+    "type": "double"
+  },
+  {
+    "value": "sub-visibility",
+    "line": 1424,
+    "type": "double"
+  },
+  {
+    "value": "track-list",
+    "line": 1431,
+    "type": "double"
+  },
+  {
+    "value": "selected",
+    "line": 1432,
+    "type": "double"
+  },
+  {
+    "value": "type",
+    "line": 1432,
+    "type": "double"
+  },
+  {
+    "value": "type",
+    "line": 1433,
+    "type": "double"
+  },
+  {
+    "value": "type",
+    "line": 1434,
+    "type": "double"
+  },
+  {
+    "value": "video",
+    "line": 1444,
+    "type": "double"
+  },
+  {
+    "value": "audio",
+    "line": 1445,
+    "type": "double"
+  },
+  {
+    "value": "sub",
+    "line": 1446,
+    "type": "double"
+  },
+  {
+    "value": "audio",
+    "line": 1453,
+    "type": "double"
+  },
+  {
+    "value": "audio-file",
+    "line": 1453,
+    "type": "double"
+  },
+  {
+    "value": "sub",
+    "line": 1454,
+    "type": "double"
+  },
+  {
+    "value": "sub-file",
+    "line": 1454,
+    "type": "double"
+  },
+  {
+    "value": "video",
+    "line": 1457,
+    "type": "double"
+  },
+  {
+    "value": "vid",
+    "line": 1457,
+    "type": "double"
+  },
+  {
+    "value": "audio",
+    "line": 1458,
+    "type": "double"
+  },
+  {
+    "value": "aid",
+    "line": 1458,
+    "type": "double"
+  },
+  {
+    "value": "sub",
+    "line": 1459,
+    "type": "double"
+  },
+  {
+    "value": "sid",
+    "line": 1459,
+    "type": "double"
+  },
+  {
+    "value": "external",
+    "line": 1461,
+    "type": "single"
+  },
+  {
+    "value": "external-filename",
+    "line": 1461,
+    "type": "single"
+  },
+  {
+    "value": "--",
+    "line": 1463,
+    "type": "double"
+  },
+  {
+    "value": "=",
+    "line": 1463,
+    "type": "double"
+  },
+  {
+    "value": "type",
+    "line": 1463,
+    "type": "single"
+  },
+  {
+    "value": "external-filename",
+    "line": 1463,
+    "type": "single"
+  },
+  {
+    "value": "--",
+    "line": 1467,
+    "type": "double"
+  },
+  {
+    "value": "=",
+    "line": 1467,
+    "type": "double"
+  },
+  {
+    "value": "type",
+    "line": 1467,
+    "type": "single"
+  },
+  {
+    "value": "id",
+    "line": 1467,
+    "type": "single"
+  },
+  {
+    "value": "external",
+    "line": 1476,
+    "type": "single"
+  },
+  {
+    "value": "[aid",
+    "line": 1488,
+    "type": "double"
+  },
+  {
+    "value": "]",
+    "line": 1488,
+    "type": "double"
+  },
+  {
+    "value": "id",
+    "line": 1488,
+    "type": "single"
+  },
+  {
+    "value": "amix[ao]",
+    "line": 1490,
+    "type": "double"
+  },
+  {
+    "value": "--lavfi-complex=",
+    "line": 1492,
+    "type": "double"
+  },
+  {
+    "value": "lavfi-scale=iw*sar:ih",
+    "line": 1505,
+    "type": "double"
+  },
+  {
+    "value": "lavfi-scale=-2:",
+    "line": 1510,
+    "type": "double"
+  },
+  {
+    "value": "fps=",
+    "line": 1519,
+    "type": "double"
+  },
+  {
+    "value": "brightness",
+    "line": 1526,
+    "type": "double"
+  },
+  {
+    "value": "contrast",
+    "line": 1527,
+    "type": "double"
+  },
+  {
+    "value": "saturation",
+    "line": 1528,
+    "type": "double"
+  },
+  {
+    "value": "lavfi-eq=contrast=",
+    "line": 1536,
+    "type": "double"
+  },
+  {
+    "value": ":saturation=",
+    "line": 1536,
+    "type": "double"
+  },
+  {
+    "value": ":brightness=",
+    "line": 1536,
+    "type": "double"
+  },
+  {
+    "value": "--",
+    "line": 1545,
+    "type": "double"
+  },
+  {
+    "value": "=",
+    "line": 1545,
+    "type": "double"
+  },
+  {
+    "value": "--",
+    "line": 1557,
+    "type": "double"
+  },
+  {
+    "value": "-append=",
+    "line": 1557,
+    "type": "double"
+  },
+  {
+    "value": "sub-ass-override",
+    "line": 1565,
+    "type": "double"
+  },
+  {
+    "value": "sub-ass-force-style",
+    "line": 1566,
+    "type": "double"
+  },
+  {
+    "value": "sub-ass-vsfilter-aspect-compat",
+    "line": 1567,
+    "type": "double"
+  },
+  {
+    "value": "sub-auto",
+    "line": 1568,
+    "type": "double"
+  },
+  {
+    "value": "sub-pos",
+    "line": 1569,
+    "type": "double"
+  },
+  {
+    "value": "sub-delay",
+    "line": 1570,
+    "type": "double"
+  },
+  {
+    "value": "video-rotate",
+    "line": 1571,
+    "type": "double"
+  },
+  {
+    "value": "ytdl-format",
+    "line": 1572,
+    "type": "double"
+  },
+  {
+    "value": "deinterlace",
+    "line": 1573,
+    "type": "double"
+  },
+  {
+    "value": "speed",
+    "line": 1579,
+    "type": "double"
+  },
+  {
+    "value": "--vf-add=setpts=PTS/",
+    "line": 1582,
+    "type": "double"
+  },
+  {
+    "value": "--af-add=atempo=",
+    "line": 1583,
+    "type": "double"
+  },
+  {
+    "value": "--sub-speed=1/",
+    "line": 1584,
+    "type": "double"
+  },
+  {
+    "value": "filename/no-ext",
+    "line": 1591,
+    "type": "double"
+  },
+  {
+    "value": "--oset-metadata=title=%",
+    "line": 1593,
+    "type": "double"
+  },
+  {
+    "value": "%",
+    "line": 1593,
+    "type": "double"
+  },
+  {
+    "value": "vf",
+    "line": 1598,
+    "type": "double"
+  },
+  {
+    "value": "apply_current_filters: got ",
+    "line": 1599,
+    "type": "double"
+  },
+  {
+    "value": " currently applied.",
+    "line": 1599,
+    "type": "double"
+  },
+  {
+    "value": "apply_current_filters: filter name: ",
+    "line": 1604,
+    "type": "double"
+  },
+  {
+    "value": "name",
+    "line": 1604,
+    "type": "single"
+  },
+  {
+    "value": "enabled",
+    "line": 1605,
+    "type": "double"
+  },
+  {
+    "value": "name",
+    "line": 1609,
+    "type": "double"
+  },
+  {
+    "value": "params",
+    "line": 1610,
+    "type": "double"
+  },
+  {
+    "value": ":",
+    "line": 1612,
+    "type": "double"
+  },
+  {
+    "value": "=%",
+    "line": 1612,
+    "type": "double"
+  },
+  {
+    "value": "%",
+    "line": 1612,
+    "type": "double"
+  },
+  {
+    "value": "lavfi-crop=",
+    "line": 1633,
+    "type": "double"
+  },
+  {
+    "value": ":",
+    "line": 1633,
+    "type": "double"
+  },
+  {
+    "value": ":",
+    "line": 1633,
+    "type": "double"
+  },
+  {
+    "value": ":",
+    "line": 1633,
+    "type": "double"
+  },
+  {
+    "value": "--vf-add=",
+    "line": 1650,
+    "type": "double"
+  },
+  {
+    "value": "audio",
+    "line": 1663,
+    "type": "double"
+  },
+  {
+    "value": "path",
+    "line": 1674,
+    "type": "single"
+  },
+  {
+    "value": "file-format",
+    "line": 1681,
+    "type": "single"
+  },
+  {
+    "value": "hls",
+    "line": 1681,
+    "type": "single"
+  },
+  {
+    "value": "~",
+    "line": 1682,
+    "type": "single"
+  },
+  {
+    "value": "cache_dump.ts",
+    "line": 1682,
+    "type": "single"
+  },
+  {
+    "value": "dump_cache",
+    "line": 1684,
+    "type": "single"
+  },
+  {
+    "value": "No file is being played",
+    "line": 1704,
+    "type": "double"
+  },
+  {
+    "value": "mpv",
+    "line": 1708,
+    "type": "double"
+  },
+  {
+    "value": "--start=",
+    "line": 1710,
+    "type": "double"
+  },
+  {
+    "value": "--end=",
+    "line": 1711,
+    "type": "double"
+  },
+  {
+    "value": "--loop-file=no",
+    "line": 1712,
+    "type": "double"
+  },
+  {
+    "value": "--no-pause",
+    "line": 1713,
+    "type": "double"
+  },
+  {
+    "value": "audio",
+    "line": 1719,
+    "type": "double"
+  },
+  {
+    "value": "video",
+    "line": 1736,
+    "type": "double"
+  },
+  {
+    "value": "--vid=no",
+    "line": 1738,
+    "type": "double"
+  },
+  {
+    "value": "audio",
+    "line": 1740,
+    "type": "double"
+  },
+  {
+    "value": "--aid=no",
+    "line": 1742,
+    "type": "double"
+  },
+  {
+    "value": "sub",
+    "line": 1744,
+    "type": "double"
+  },
+  {
+    "value": "--sid=no",
+    "line": 1746,
+    "type": "double"
+  },
+  {
+    "value": "--ovcopts-add=b=",
+    "line": 1768,
+    "type": "double"
+  },
+  {
+    "value": "k",
+    "line": 1768,
+    "type": "double"
+  },
+  {
+    "value": "--oacopts-add=b=",
+    "line": 1773,
+    "type": "double"
+  },
+  {
+    "value": "k",
+    "line": 1773,
+    "type": "double"
+  },
+  {
+    "value": "ovc",
+    "line": 1777,
+    "type": "double"
+  },
+  {
+    "value": "oac",
+    "line": 1777,
+    "type": "double"
+  },
+  {
+    "value": "--",
+    "line": 1779,
+    "type": "double"
+  },
+  {
+    "value": "opts-add=minrate=",
+    "line": 1779,
+    "type": "double"
+  },
+  {
+    "value": "k",
+    "line": 1779,
+    "type": "double"
+  },
+  {
+    "value": "--",
+    "line": 1780,
+    "type": "double"
+  },
+  {
+    "value": "opts-add=maxrate=",
+    "line": 1780,
+    "type": "double"
+  },
+  {
+    "value": "k",
+    "line": 1780,
+    "type": "double"
+  },
+  {
+    "value": "ovc",
+    "line": 1784,
+    "type": "double"
+  },
+  {
+    "value": "oac",
+    "line": 1784,
+    "type": "double"
+  },
+  {
+    "value": "--",
+    "line": 1786,
+    "type": "double"
+  },
+  {
+    "value": "opts-add=b=0",
+    "line": 1786,
+    "type": "double"
+  },
+  {
+    "value": "[^%s]+",
+    "line": 1790,
+    "type": "double"
+  },
+  {
+    "value": "[^%s]+",
+    "line": 1794,
+    "type": "double"
+  },
+  {
+    "value": "--ovcopts-add=crf=",
+    "line": 1799,
+    "type": "double"
+  },
+  {
+    "value": "~",
+    "line": 1805,
+    "type": "double"
+  },
+  {
+    "value": "--o=",
+    "line": 1816,
+    "type": "double"
+  },
+  {
+    "value": "encode-started",
+    "line": 1818,
+    "type": "double"
+  },
+  {
+    "value": "--ovcopts-add=flags=+pass1",
+    "line": 1832,
+    "type": "double"
+  },
+  {
+    "value": "Starting first pass...",
+    "line": 1834,
+    "type": "double"
+  },
+  {
+    "value": "First-pass command line: ",
+    "line": 1835,
+    "type": "double"
+  },
+  {
+    "value": " ",
+    "line": 1835,
+    "type": "double"
+  },
+  {
+    "value": "First pass failed! Check the logs for details.",
+    "line": 1841,
+    "type": "double"
+  },
+  {
+    "value": "encode-finished",
+    "line": 1842,
+    "type": "double"
+  },
+  {
+    "value": "fail",
+    "line": 1842,
+    "type": "double"
+  },
+  {
+    "value": "--ovcopts-add=flags=+pass2",
+    "line": 1846,
+    "type": "double"
+  },
+  {
+    "value": "libvpx",
+    "line": 1848,
+    "type": "double"
+  },
+  {
+    "value": "Patching libvpx pass log file...",
+    "line": 1849,
+    "type": "double"
+  },
+  {
+    "value": "Encoding to",
+    "line": 1854,
+    "type": "double"
+  },
+  {
+    "value": "Command line:",
+    "line": 1855,
+    "type": "double"
+  },
+  {
+    "value": " ",
+    "line": 1855,
+    "type": "double"
+  },
+  {
+    "value": "Started encode, process was detached.",
+    "line": 1857,
+    "type": "double"
+  },
+  {
+    "value": "Started encode...",
+    "line": 1864,
+    "type": "double"
+  },
+  {
+    "value": "Encoded successfully! Saved to\\\\N",
+    "line": 1874,
+    "type": "double"
+  },
+  {
+    "value": "encode-finished",
+    "line": 1875,
+    "type": "double"
+  },
+  {
+    "value": "success",
+    "line": 1875,
+    "type": "double"
+  },
+  {
+    "value": "Encode failed! Check the logs for details.",
+    "line": 1877,
+    "type": "double"
+  },
+  {
+    "value": "encode-finished",
+    "line": 1878,
+    "type": "double"
+  },
+  {
+    "value": "fail",
+    "line": 1878,
+    "type": "double"
+  },
+  {
+    "value": "{\\\\an7}",
+    "line": 1938,
+    "type": "double"
+  },
+  {
+    "value": "{\\\\bord0}",
+    "line": 1940,
+    "type": "single"
+  },
+  {
+    "value": "{\\\\shad0}",
+    "line": 1941,
+    "type": "single"
+  },
+  {
+    "value": "{\\\\c&H000000&}",
+    "line": 1942,
+    "type": "single"
+  },
+  {
+    "value": "{\\\\alpha&H77}",
+    "line": 1943,
+    "type": "single"
+  },
+  {
+    "value": "\\\\N",
+    "line": 1958,
+    "type": "double"
+  },
+  {
+    "value": "Crop:",
+    "line": 1958,
+    "type": "single"
+  },
+  {
+    "value": " change point A (",
+    "line": 1959,
+    "type": "double"
+  }
+]

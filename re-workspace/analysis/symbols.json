@@ -1,0 +1,1924 @@
+{
+  "functions": [
+    {
+      "name": "base64_encode",
+      "args": "data",
+      "line_start": 36,
+      "line_end": 48,
+      "raw": "function base64_encode(data)"
+    },
+    {
+      "name": "base64_decode",
+      "args": "data",
+      "line_start": 49,
+      "line_end": 63,
+      "raw": "function base64_decode(data)"
+    },
+    {
+      "name": "emit_event",
+      "args": "event_name, ...",
+      "line_start": 64,
+      "line_end": 67,
+      "raw": "emit_event = function(event_name, ...)"
+    },
+    {
+      "name": "test_set_options",
+      "args": "new_options_json",
+      "line_start": 68,
+      "line_end": 75,
+      "raw": "test_set_options = function(new_options_json)"
+    },
+    {
+      "name": "bold",
+      "args": "text",
+      "line_start": 76,
+      "line_end": 79,
+      "raw": "bold = function(text)"
+    },
+    {
+      "name": "message",
+      "args": "text, duration",
+      "line_start": 80,
+      "line_end": 85,
+      "raw": "message = function(text, duration)"
+    },
+    {
+      "name": "append",
+      "args": "a, b",
+      "line_start": 86,
+      "line_end": 92,
+      "raw": "append = function(a, b)"
+    },
+    {
+      "name": "seconds_to_time_string",
+      "args": "seconds, no_ms, full",
+      "line_start": 93,
+      "line_end": 107,
+      "raw": "seconds_to_time_string = function(seconds, no_ms, full)"
+    },
+    {
+      "name": "seconds_to_path_element",
+      "args": "seconds, no_ms, full",
+      "line_start": 108,
+      "line_end": 114,
+      "raw": "seconds_to_path_element = function(seconds, no_ms, full)"
+    },
+    {
+      "name": "file_exists",
+      "args": "name",
+      "line_start": 115,
+      "line_end": 122,
+      "raw": "file_exists = function(name)"
+    },
+    {
+      "name": "expand_properties",
+      "args": "text, magic",
+      "line_start": 123,
+      "line_end": 174,
+      "raw": "expand_properties = function(text, magic)"
+    },
+    {
+      "name": "format_filename",
+      "args": "startTime, endTime, videoFormat",
+      "line_start": 175,
+      "line_end": 239,
+      "raw": "format_filename = function(startTime, endTime, videoFormat)"
+    },
+    {
+      "name": "parse_directory",
+      "args": "dir",
+      "line_start": 240,
+      "line_end": 260,
+      "raw": "parse_directory = function(dir)"
+    },
+    {
+      "name": "trim",
+      "args": "s",
+      "line_start": 261,
+      "line_end": 264,
+      "raw": "trim = function(s)"
+    },
+    {
+      "name": "get_null_path",
+      "args": "",
+      "line_start": 265,
+      "line_end": 271,
+      "raw": "get_null_path = function()"
+    },
+    {
+      "name": "run_subprocess",
+      "args": "params",
+      "line_start": 272,
+      "line_end": 282,
+      "raw": "run_subprocess = function(params)"
+    },
+    {
+      "name": "shell_escape",
+      "args": "args",
+      "line_start": 283,
+      "line_end": 302,
+      "raw": "shell_escape = function(args)"
+    },
+    {
+      "name": "run_subprocess_popen",
+      "args": "command_line",
+      "line_start": 303,
+      "line_end": 309,
+      "raw": "run_subprocess_popen = function(command_line)"
+    },
+    {
+      "name": "calculate_scale_factor",
+      "args": "",
+      "line_start": 310,
+      "line_end": 315,
+      "raw": "calculate_scale_factor = function()"
+    },
+    {
+      "name": "should_display_progress",
+      "args": "",
+      "line_start": 316,
+      "line_end": 322,
+      "raw": "should_display_progress = function()"
+    },
+    {
+      "name": "reverse",
+      "args": "list",
+      "line_start": 323,
+      "line_end": 334,
+      "raw": "reverse = function(list)"
+    },
+    {
+      "name": "get_pass_logfile_path",
+      "args": "encode_out_path",
+      "line_start": 335,
+      "line_end": 340,
+      "raw": "get_pass_logfile_path = function(encode_out_path)"
+    },
+    {
+      "name": "get_video_dimensions",
+      "args": "",
+      "line_start": 341,
+      "line_end": 394,
+      "raw": "get_video_dimensions = function()"
+    },
+    {
+      "name": "split_scaling",
+      "args": "dst_size, scaled_src_size, zoom, align, pan",
+      "line_start": 395,
+      "line_end": 426,
+      "raw": "    split_scaling = function(dst_size, scaled_src_size, zoom, align, pan)"
+    },
+    {
+      "name": "set_dimensions_changed",
+      "args": "",
+      "line_start": 427,
+      "line_end": 430,
+      "raw": "set_dimensions_changed = function()"
+    },
+    {
+      "name": "monitor_dimensions",
+      "args": "",
+      "line_start": 431,
+      "line_end": 449,
+      "raw": "monitor_dimensions = function()"
+    },
+    {
+      "name": "clamp",
+      "args": "min, val, max",
+      "line_start": 450,
+      "line_end": 459,
+      "raw": "clamp = function(min, val, max)"
+    },
+    {
+      "name": "clamp_point",
+      "args": "top_left, point, bottom_right",
+      "line_start": 460,
+      "line_end": 469,
+      "raw": "clamp_point = function(top_left, point, bottom_right)"
+    },
+    {
+      "name": "set_from_screen",
+      "args": "self, sx, sy",
+      "line_start": 470,
+      "line_end": 478,
+      "raw": "    set_from_screen = function(self, sx, sy)"
+    },
+    {
+      "name": "to_screen",
+      "args": "self",
+      "line_start": 479,
+      "line_end": 488,
+      "raw": "    to_screen = function(self)"
+    },
+    {
+      "name": "__init",
+      "args": "self",
+      "line_start": 489,
+      "line_end": 496,
+      "raw": "    __init = function(self)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 497,
+      "line_end": 509,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "is_valid",
+      "args": "self",
+      "line_start": 510,
+      "line_end": 512,
+      "raw": "    is_valid = function(self)"
+    },
+    {
+      "name": "set_from_points",
+      "args": "self, p1, p2",
+      "line_start": 513,
+      "line_end": 521,
+      "raw": "    set_from_points = function(self, p1, p2)"
+    },
+    {
+      "name": "__init",
+      "args": "self",
+      "line_start": 522,
+      "line_end": 531,
+      "raw": "    __init = function(self)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 532,
+      "line_end": 541,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "make_fullscreen_region",
+      "args": "",
+      "line_start": 542,
+      "line_end": 562,
+      "raw": "make_fullscreen_region = function()"
+    },
+    {
+      "name": "read_double",
+      "args": "bytes",
+      "line_start": 563,
+      "line_end": 579,
+      "raw": "read_double = function(bytes)"
+    },
+    {
+      "name": "write_double",
+      "args": "num",
+      "line_start": 580,
+      "line_end": 617,
+      "raw": "write_double = function(num)"
+    },
+    {
+      "name": "get_duration",
+      "args": "self",
+      "line_start": 618,
+      "line_end": 621,
+      "raw": "    get_duration = function(self)"
+    },
+    {
+      "name": "set_duration",
+      "args": "self, duration",
+      "line_start": 622,
+      "line_end": 625,
+      "raw": "    set_duration = function(self, duration)"
+    },
+    {
+      "name": "_bytes_to_string",
+      "args": "self, bytes",
+      "line_start": 626,
+      "line_end": 628,
+      "raw": "    _bytes_to_string = function(self, bytes)"
+    },
+    {
+      "name": "as_binary_string",
+      "args": "self",
+      "line_start": 629,
+      "line_end": 637,
+      "raw": "    as_binary_string = function(self)"
+    },
+    {
+      "name": "__init",
+      "args": "self, before_duration, duration, after_duration",
+      "line_start": 638,
+      "line_end": 646,
+      "raw": "    __init = function(self, before_duration, duration, after_duration)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 647,
+      "line_end": 657,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "self.data_before_duration_size",
+      "args": "self",
+      "line_start": 658,
+      "line_end": 660,
+      "raw": "  self.data_before_duration_size = function(self)"
+    },
+    {
+      "name": "self.data_after_duration_size",
+      "args": "self",
+      "line_start": 661,
+      "line_end": 663,
+      "raw": "  self.data_after_duration_size = function(self)"
+    },
+    {
+      "name": "self.size",
+      "args": "self",
+      "line_start": 664,
+      "line_end": 666,
+      "raw": "  self.size = function(self)"
+    },
+    {
+      "name": "self.from_bytes",
+      "args": "self, bytes",
+      "line_start": 667,
+      "line_end": 707,
+      "raw": "  self.from_bytes = function(self, bytes)"
+    },
+    {
+      "name": "read_logfile_into_stats_array",
+      "args": "logfile_path",
+      "line_start": 708,
+      "line_end": 724,
+      "raw": "read_logfile_into_stats_array = function(logfile_path)"
+    },
+    {
+      "name": "write_stats_array_to_logfile",
+      "args": "stats_array, logfile_path",
+      "line_start": 725,
+      "line_end": 735,
+      "raw": "write_stats_array_to_logfile = function(stats_array, logfile_path)"
+    },
+    {
+      "name": "vp8_patch_logfile",
+      "args": "logfile_path, encode_total_duration",
+      "line_start": 736,
+      "line_end": 749,
+      "raw": "vp8_patch_logfile = function(logfile_path, encode_total_duration)"
+    },
+    {
+      "name": "getPreFilters",
+      "args": "self",
+      "line_start": 750,
+      "line_end": 752,
+      "raw": "    getPreFilters = function(self)"
+    },
+    {
+      "name": "getPostFilters",
+      "args": "self",
+      "line_start": 753,
+      "line_end": 755,
+      "raw": "    getPostFilters = function(self)"
+    },
+    {
+      "name": "getFlags",
+      "args": "self",
+      "line_start": 756,
+      "line_end": 758,
+      "raw": "    getFlags = function(self)"
+    },
+    {
+      "name": "getCodecFlags",
+      "args": "self",
+      "line_start": 759,
+      "line_end": 768,
+      "raw": "    getCodecFlags = function(self)"
+    },
+    {
+      "name": "postCommandModifier",
+      "args": "self, command, region, startTime, endTime",
+      "line_start": 769,
+      "line_end": 774,
+      "raw": "    postCommandModifier = function(self, command, region, startTime, endTime)"
+    },
+    {
+      "name": "__init",
+      "args": "self",
+      "line_start": 775,
+      "line_end": 786,
+      "raw": "    __init = function(self)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 787,
+      "line_end": 800,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "getColorspace",
+      "args": "self",
+      "line_start": 801,
+      "line_end": 816,
+      "raw": "    getColorspace = function(self)"
+    },
+    {
+      "name": "getPostFilters",
+      "args": "self",
+      "line_start": 817,
+      "line_end": 827,
+      "raw": "    getPostFilters = function(self)"
+    },
+    {
+      "name": "__init",
+      "args": "self",
+      "line_start": 828,
+      "line_end": 839,
+      "raw": "    __init = function(self)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 840,
+      "line_end": 850,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 851,
+      "line_end": 868,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "getPreFilters",
+      "args": "self",
+      "line_start": 869,
+      "line_end": 883,
+      "raw": "    getPreFilters = function(self)"
+    },
+    {
+      "name": "getFlags",
+      "args": "self",
+      "line_start": 884,
+      "line_end": 896,
+      "raw": "    getFlags = function(self)"
+    },
+    {
+      "name": "__init",
+      "args": "self",
+      "line_start": 897,
+      "line_end": 908,
+      "raw": "    __init = function(self)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 909,
+      "line_end": 919,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 920,
+      "line_end": 937,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "getFlags",
+      "args": "self",
+      "line_start": 938,
+      "line_end": 946,
+      "raw": "    getFlags = function(self)"
+    },
+    {
+      "name": "__init",
+      "args": "self",
+      "line_start": 947,
+      "line_end": 958,
+      "raw": "    __init = function(self)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 959,
+      "line_end": 969,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 970,
+      "line_end": 990,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "__init",
+      "args": "self",
+      "line_start": 991,
+      "line_end": 1002,
+      "raw": "    __init = function(self)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 1003,
+      "line_end": 1013,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 1014,
+      "line_end": 1034,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "__init",
+      "args": "self",
+      "line_start": 1035,
+      "line_end": 1046,
+      "raw": "    __init = function(self)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 1047,
+      "line_end": 1057,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 1058,
+      "line_end": 1078,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "__init",
+      "args": "self",
+      "line_start": 1079,
+      "line_end": 1090,
+      "raw": "    __init = function(self)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 1091,
+      "line_end": 1101,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 1102,
+      "line_end": 1119,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "postCommandModifier",
+      "args": "self, command, region, startTime, endTime",
+      "line_start": 1120,
+      "line_end": 1180,
+      "raw": "    postCommandModifier = function(self, command, region, startTime, endTime)"
+    },
+    {
+      "name": "__init",
+      "args": "self",
+      "line_start": 1181,
+      "line_end": 1192,
+      "raw": "    __init = function(self)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 1193,
+      "line_end": 1203,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 1204,
+      "line_end": 1220,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "add_keybinds",
+      "args": "self",
+      "line_start": 1221,
+      "line_end": 1230,
+      "raw": "    add_keybinds = function(self)"
+    },
+    {
+      "name": "remove_keybinds",
+      "args": "self",
+      "line_start": 1231,
+      "line_end": 1238,
+      "raw": "    remove_keybinds = function(self)"
+    },
+    {
+      "name": "observe_properties",
+      "args": "self",
+      "line_start": 1239,
+      "line_end": 1239,
+      "raw": "    observe_properties = function(self)"
+    },
+    {
+      "name": "self.sizeCallback",
+      "args": "",
+      "line_start": 1240,
+      "line_end": 1260,
+      "raw": "      self.sizeCallback = function()"
+    },
+    {
+      "name": "unobserve_properties",
+      "args": "self",
+      "line_start": 1261,
+      "line_end": 1266,
+      "raw": "    unobserve_properties = function(self)"
+    },
+    {
+      "name": "clear",
+      "args": "self",
+      "line_start": 1267,
+      "line_end": 1271,
+      "raw": "    clear = function(self)"
+    },
+    {
+      "name": "prepare",
+      "args": "self",
+      "line_start": 1272,
+      "line_end": 1274,
+      "raw": "    prepare = function(self)"
+    },
+    {
+      "name": "dispose",
+      "args": "self",
+      "line_start": 1275,
+      "line_end": 1277,
+      "raw": "    dispose = function(self)"
+    },
+    {
+      "name": "show",
+      "args": "self",
+      "line_start": 1278,
+      "line_end": 1288,
+      "raw": "    show = function(self)"
+    },
+    {
+      "name": "hide",
+      "args": "self",
+      "line_start": 1289,
+      "line_end": 1298,
+      "raw": "    hide = function(self)"
+    },
+    {
+      "name": "setup_text",
+      "args": "self, ass",
+      "line_start": 1299,
+      "line_end": 1308,
+      "raw": "    setup_text = function(self, ass)"
+    },
+    {
+      "name": "__init",
+      "args": "",
+      "line_start": 1309,
+      "line_end": 1313,
+      "raw": "    __init = function() end,"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 1314,
+      "line_end": 1328,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "draw",
+      "args": "self",
+      "line_start": 1329,
+      "line_end": 1338,
+      "raw": "    draw = function(self)"
+    },
+    {
+      "name": "parseLine",
+      "args": "self, line",
+      "line_start": 1339,
+      "line_end": 1352,
+      "raw": "    parseLine = function(self, line)"
+    },
+    {
+      "name": "startEncode",
+      "args": "self, command_line",
+      "line_start": 1353,
+      "line_end": 1385,
+      "raw": "    startEncode = function(self, command_line)"
+    },
+    {
+      "name": "__init",
+      "args": "self, startTime, endTime",
+      "line_start": 1386,
+      "line_end": 1395,
+      "raw": "    __init = function(self, startTime, endTime)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 1396,
+      "line_end": 1406,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 1407,
+      "line_end": 1419,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "get_active_tracks",
+      "args": "",
+      "line_start": 1420,
+      "line_end": 1439,
+      "raw": "get_active_tracks = function()"
+    },
+    {
+      "name": "filter_tracks_supported_by_format",
+      "args": "active_tracks, format",
+      "line_start": 1440,
+      "line_end": 1450,
+      "raw": "filter_tracks_supported_by_format = function(active_tracks, format)"
+    },
+    {
+      "name": "append_track",
+      "args": "out, track",
+      "line_start": 1451,
+      "line_end": 1471,
+      "raw": "append_track = function(out, track)"
+    },
+    {
+      "name": "append_audio_tracks",
+      "args": "out, tracks",
+      "line_start": 1472,
+      "line_end": 1500,
+      "raw": "append_audio_tracks = function(out, tracks)"
+    },
+    {
+      "name": "get_scale_filters",
+      "args": "",
+      "line_start": 1501,
+      "line_end": 1515,
+      "raw": "get_scale_filters = function()"
+    },
+    {
+      "name": "get_fps_filters",
+      "args": "",
+      "line_start": 1516,
+      "line_end": 1524,
+      "raw": "get_fps_filters = function()"
+    },
+    {
+      "name": "get_contrast_brightness_and_saturation_filters",
+      "args": "",
+      "line_start": 1525,
+      "line_end": 1539,
+      "raw": "get_contrast_brightness_and_saturation_filters = function()"
+    },
+    {
+      "name": "append_property",
+      "args": "out, property_name, option_name",
+      "line_start": 1540,
+      "line_end": 1549,
+      "raw": "append_property = function(out, property_name, option_name)"
+    },
+    {
+      "name": "append_list_options",
+      "args": "out, property_name, option_prefix",
+      "line_start": 1550,
+      "line_end": 1562,
+      "raw": "append_list_options = function(out, property_name, option_prefix)"
+    },
+    {
+      "name": "get_playback_options",
+      "args": "",
+      "line_start": 1563,
+      "line_end": 1576,
+      "raw": "get_playback_options = function()"
+    },
+    {
+      "name": "get_speed_flags",
+      "args": "",
+      "line_start": 1577,
+      "line_end": 1589,
+      "raw": "get_speed_flags = function()"
+    },
+    {
+      "name": "get_metadata_flags",
+      "args": "",
+      "line_start": 1590,
+      "line_end": 1596,
+      "raw": "get_metadata_flags = function()"
+    },
+    {
+      "name": "apply_current_filters",
+      "args": "filters",
+      "line_start": 1597,
+      "line_end": 1624,
+      "raw": "apply_current_filters = function(filters)"
+    },
+    {
+      "name": "get_video_filters",
+      "args": "format, region",
+      "line_start": 1625,
+      "line_end": 1642,
+      "raw": "get_video_filters = function(format, region)"
+    },
+    {
+      "name": "get_video_encode_flags",
+      "args": "format, region",
+      "line_start": 1643,
+      "line_end": 1656,
+      "raw": "get_video_encode_flags = function(format, region)"
+    },
+    {
+      "name": "calculate_bitrate",
+      "args": "active_tracks, format, length",
+      "line_start": 1657,
+      "line_end": 1672,
+      "raw": "calculate_bitrate = function(active_tracks, format, length)"
+    },
+    {
+      "name": "find_path",
+      "args": "startTime, endTime",
+      "line_start": 1673,
+      "line_end": 1696,
+      "raw": "find_path = function(startTime, endTime)"
+    },
+    {
+      "name": "encode",
+      "args": "region, startTime, endTime",
+      "line_start": 1697,
+      "line_end": 1890,
+      "raw": "encode = function(region, startTime, endTime)"
+    },
+    {
+      "name": "reset",
+      "args": "self",
+      "line_start": 1891,
+      "line_end": 1908,
+      "raw": "    reset = function(self)"
+    },
+    {
+      "name": "setPointA",
+      "args": "self",
+      "line_start": 1909,
+      "line_end": 1915,
+      "raw": "    setPointA = function(self)"
+    },
+    {
+      "name": "setPointB",
+      "args": "self",
+      "line_start": 1916,
+      "line_end": 1922,
+      "raw": "    setPointB = function(self)"
+    },
+    {
+      "name": "cancel",
+      "args": "self",
+      "line_start": 1923,
+      "line_end": 1926,
+      "raw": "    cancel = function(self)"
+    },
+    {
+      "name": "finish",
+      "args": "self",
+      "line_start": 1927,
+      "line_end": 1932,
+      "raw": "    finish = function(self)"
+    },
+    {
+      "name": "draw_box",
+      "args": "self, ass",
+      "line_start": 1933,
+      "line_end": 1950,
+      "raw": "    draw_box = function(self, ass)"
+    },
+    {
+      "name": "draw",
+      "args": "self",
+      "line_start": 1951,
+      "line_end": 1970,
+      "raw": "    draw = function(self)"
+    },
+    {
+      "name": "__init",
+      "args": "self, callback, region",
+      "line_start": 1971,
+      "line_end": 2023,
+      "raw": "    __init = function(self, callback, region)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 2024,
+      "line_end": 2034,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 2035,
+      "line_end": 2050,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "hasPrevious",
+      "args": "self",
+      "line_start": 2051,
+      "line_end": 2064,
+      "raw": "    hasPrevious = function(self)"
+    },
+    {
+      "name": "hasNext",
+      "args": "self",
+      "line_start": 2065,
+      "line_end": 2078,
+      "raw": "    hasNext = function(self)"
+    },
+    {
+      "name": "leftKey",
+      "args": "self",
+      "line_start": 2079,
+      "line_end": 2093,
+      "raw": "    leftKey = function(self)"
+    },
+    {
+      "name": "rightKey",
+      "args": "self",
+      "line_start": 2094,
+      "line_end": 2108,
+      "raw": "    rightKey = function(self)"
+    },
+    {
+      "name": "getValue",
+      "args": "self",
+      "line_start": 2109,
+      "line_end": 2123,
+      "raw": "    getValue = function(self)"
+    },
+    {
+      "name": "setValue",
+      "args": "self, value",
+      "line_start": 2124,
+      "line_end": 2145,
+      "raw": "    setValue = function(self, value)"
+    },
+    {
+      "name": "getDisplayValue",
+      "args": "self",
+      "line_start": 2146,
+      "line_end": 2164,
+      "raw": "    getDisplayValue = function(self)"
+    },
+    {
+      "name": "draw",
+      "args": "self, ass, selected",
+      "line_start": 2165,
+      "line_end": 2179,
+      "raw": "    draw = function(self, ass, selected)"
+    },
+    {
+      "name": "optVisible",
+      "args": "self",
+      "line_start": 2180,
+      "line_end": 2189,
+      "raw": "    optVisible = function(self)"
+    },
+    {
+      "name": "__init",
+      "args": "self, optType, displayText, value, opts, visibleCheckFn",
+      "line_start": 2190,
+      "line_end": 2201,
+      "raw": "    __init = function(self, optType, displayText, value, opts, visibleCheckFn)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 2202,
+      "line_end": 2215,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "getCurrentOption",
+      "args": "self",
+      "line_start": 2216,
+      "line_end": 2218,
+      "raw": "    getCurrentOption = function(self)"
+    },
+    {
+      "name": "leftKey",
+      "args": "self",
+      "line_start": 2219,
+      "line_end": 2222,
+      "raw": "    leftKey = function(self)"
+    },
+    {
+      "name": "rightKey",
+      "args": "self",
+      "line_start": 2223,
+      "line_end": 2226,
+      "raw": "    rightKey = function(self)"
+    },
+    {
+      "name": "prevOpt",
+      "args": "self",
+      "line_start": 2227,
+      "line_end": 2235,
+      "raw": "    prevOpt = function(self)"
+    },
+    {
+      "name": "nextOpt",
+      "args": "self",
+      "line_start": 2236,
+      "line_end": 2244,
+      "raw": "    nextOpt = function(self)"
+    },
+    {
+      "name": "confirmOpts",
+      "args": "self",
+      "line_start": 2245,
+      "line_end": 2253,
+      "raw": "    confirmOpts = function(self)"
+    },
+    {
+      "name": "cancelOpts",
+      "args": "self",
+      "line_start": 2254,
+      "line_end": 2257,
+      "raw": "    cancelOpts = function(self)"
+    },
+    {
+      "name": "draw",
+      "args": "self",
+      "line_start": 2258,
+      "line_end": 2278,
+      "raw": "    draw = function(self)"
+    },
+    {
+      "name": "__init",
+      "args": "self, callback",
+      "line_start": 2279,
+      "line_end": 2515,
+      "raw": "    __init = function(self, callback)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 2516,
+      "line_end": 2526,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 2527,
+      "line_end": 2543,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "prepare",
+      "args": "self",
+      "line_start": 2544,
+      "line_end": 2567,
+      "raw": "    prepare = function(self)"
+    },
+    {
+      "name": "dispose",
+      "args": "self",
+      "line_start": 2568,
+      "line_end": 2574,
+      "raw": "    dispose = function(self)"
+    },
+    {
+      "name": "draw",
+      "args": "self",
+      "line_start": 2575,
+      "line_end": 2582,
+      "raw": "    draw = function(self)"
+    },
+    {
+      "name": "cancel",
+      "args": "self",
+      "line_start": 2583,
+      "line_end": 2590,
+      "raw": "    cancel = function(self)"
+    },
+    {
+      "name": "__init",
+      "args": "self, callback, region, startTime, endTime",
+      "line_start": 2591,
+      "line_end": 2615,
+      "raw": "    __init = function(self, callback, region, startTime, endTime)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 2616,
+      "line_end": 2626,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 2627,
+      "line_end": 2643,
+      "raw": "    __call = function(cls, ...)"
+    },
+    {
+      "name": "setStartTime",
+      "args": "self",
+      "line_start": 2644,
+      "line_end": 2650,
+      "raw": "    setStartTime = function(self)"
+    },
+    {
+      "name": "setEndTime",
+      "args": "self",
+      "line_start": 2651,
+      "line_end": 2657,
+      "raw": "    setEndTime = function(self)"
+    },
+    {
+      "name": "setupStartAndEndTimes",
+      "args": "self",
+      "line_start": 2658,
+      "line_end": 2670,
+      "raw": "    setupStartAndEndTimes = function(self)"
+    },
+    {
+      "name": "draw",
+      "args": "self",
+      "line_start": 2671,
+      "line_end": 2685,
+      "raw": "    draw = function(self)"
+    },
+    {
+      "name": "show",
+      "args": "self",
+      "line_start": 2686,
+      "line_end": 2689,
+      "raw": "    show = function(self)"
+    },
+    {
+      "name": "onUpdateCropRegion",
+      "args": "self, updated, newRegion",
+      "line_start": 2690,
+      "line_end": 2695,
+      "raw": "    onUpdateCropRegion = function(self, updated, newRegion)"
+    },
+    {
+      "name": "crop",
+      "args": "self",
+      "line_start": 2696,
+      "line_end": 2706,
+      "raw": "    crop = function(self)"
+    },
+    {
+      "name": "onOptionsChanged",
+      "args": "self, updated",
+      "line_start": 2707,
+      "line_end": 2709,
+      "raw": "    onOptionsChanged = function(self, updated)"
+    },
+    {
+      "name": "changeOptions",
+      "args": "self",
+      "line_start": 2710,
+      "line_end": 2720,
+      "raw": "    changeOptions = function(self)"
+    },
+    {
+      "name": "onPreviewEnded",
+      "args": "self",
+      "line_start": 2721,
+      "line_end": 2723,
+      "raw": "    onPreviewEnded = function(self)"
+    },
+    {
+      "name": "preview",
+      "args": "self",
+      "line_start": 2724,
+      "line_end": 2734,
+      "raw": "    preview = function(self)"
+    },
+    {
+      "name": "encode",
+      "args": "self",
+      "line_start": 2735,
+      "line_end": 2754,
+      "raw": "    encode = function(self)"
+    },
+    {
+      "name": "__init",
+      "args": "self",
+      "line_start": 2755,
+      "line_end": 2814,
+      "raw": "    __init = function(self)"
+    },
+    {
+      "name": "__index",
+      "args": "cls, name",
+      "line_start": 2815,
+      "line_end": 2825,
+      "raw": "    __index = function(cls, name)"
+    },
+    {
+      "name": "__call",
+      "args": "cls, ...",
+      "line_start": 2826,
+      "line_end": 2857,
+      "raw": "    __call = function(cls, ...)"
+    }
+  ],
+  "classes": [
+    {
+      "name": "_anonymous",
+      "line": 469,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 487,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 488,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 498,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 503,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "VideoPoint",
+      "line": 504,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  VideoPoint = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 509,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 520,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 521,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 533,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 538,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "Region",
+      "line": 539,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  Region = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 617,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 636,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 637,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 648,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 653,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "self",
+      "line": 654,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  local self = _class_0"
+    },
+    {
+      "name": "FirstpassStats",
+      "line": 705,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  FirstpassStats = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 749,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 773,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 774,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 788,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 793,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "Format",
+      "line": 794,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  Format = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 800,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 825,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 827,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 852,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 857,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "RawVideo",
+      "line": 861,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  RawVideo = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 868,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 894,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 896,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 921,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 926,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "WebmVP8",
+      "line": 930,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  WebmVP8 = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 937,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 944,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 946,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 971,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 976,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "WebmVP9",
+      "line": 980,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  WebmVP9 = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 987,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = { }"
+    },
+    {
+      "name": "_base_0",
+      "line": 988,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 990,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 1015,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 1020,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "MP4",
+      "line": 1024,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  MP4 = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 1031,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = { }"
+    },
+    {
+      "name": "_base_0",
+      "line": 1032,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 1034,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 1059,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 1064,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "MP4NVENC",
+      "line": 1068,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  MP4NVENC = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 1075,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = { }"
+    },
+    {
+      "name": "_base_0",
+      "line": 1076,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 1078,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 1103,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 1108,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "MP3",
+      "line": 1112,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  MP3 = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 1119,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 1178,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 1180,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 1205,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 1210,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "GIF",
+      "line": 1214,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  GIF = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 1220,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 1307,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 1308,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 1315,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 1320,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "Page",
+      "line": 1321,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  Page = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 1328,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 1383,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 1385,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 1408,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 1413,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "EncodeWithProgress",
+      "line": 1417,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  EncodeWithProgress = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 1890,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 1968,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 1970,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 2036,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 2041,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "CropPage",
+      "line": 2045,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  CropPage = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 2050,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 2188,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 2189,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 2203,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 2208,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "Option",
+      "line": 2209,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  Option = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 2215,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 2276,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 2278,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 2528,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 2533,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "EncodeOptionsPage",
+      "line": 2537,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  EncodeOptionsPage = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 2543,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 2588,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 2590,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 2628,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 2633,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "PreviewPage",
+      "line": 2637,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  PreviewPage = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 2643,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = {"
+    },
+    {
+      "name": "_base_0",
+      "line": 2752,
+      "pattern": "(\\w+)\\.__index\\s*=",
+      "raw": "  _base_0.__index = _base_0"
+    },
+    {
+      "name": "_class_0",
+      "line": 2754,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "  _class_0 = setmetatable({"
+    },
+    {
+      "name": "_self_0",
+      "line": 2827,
+      "pattern": "(\\w+)\\s*=\\s*setmetatable\\(",
+      "raw": "      local _self_0 = setmetatable({}, _base_0)"
+    },
+    {
+      "name": "__class",
+      "line": 2832,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  _base_0.__class = _class_0"
+    },
+    {
+      "name": "MainPage",
+      "line": 2836,
+      "pattern": "(\\w+)\\s*=\\s*_class_0",
+      "raw": "  MainPage = _class_0"
+    },
+    {
+      "name": "_anonymous",
+      "line": 2841,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = mainPage"
+    },
+    {
+      "name": "_anonymous",
+      "line": 2850,
+      "pattern": "local\\s+_base_0\\s*=",
+      "raw": "  local _base_0 = mainPage"
+    }
+  ],
+  "transpiler_hypothesis": {
+    "verdict": "STRONG",
+    "evidence": [
+      "_class_0 appears 86 times (MoonScript class pattern)",
+      "_base_0 appears 144 times (MoonScript base table pattern)",
+      "_parent_0 appears 72 times (MoonScript parent pattern)",
+      "__class field present (MoonScript metaclass)",
+      "setmetatable called 48 times (OOP via metatables)",
+      "_accum_0 appears 21 times (MoonScript list comprehension)",
+      "_len_0 present (MoonScript list comprehension length)"
+    ],
+    "transpiler": "MoonScript"
+  }
+}

@@ -1,0 +1,4 @@
+{"id":"SEG-03-R-001","segment":"SEG-03","type":"functional","summary":"VideoPoint uses (-1,-1) as uninitialized sentinel; set_from_screen clamps to video bounds before converting","lines":[489,504],"confidence":1.0}
+{"id":"SEG-03-R-002","segment":"SEG-03","type":"functional","summary":"Region.is_valid returns true iff all four fields (x,y,w,h) are > -1; a zero-dimension region is considered valid","lines":[510,512],"confidence":1.0,"quote":"return self.x > -1 and self.y > -1 and self.w > -1 and self.h > -1"}
+{"id":"SEG-03-R-003","segment":"SEG-03","type":"edge-case","summary":"VideoPoint.set_from_screen will error if get_video_dimensions() returns nil (no video loaded)","lines":[470,478],"confidence":0.9}
+{"id":"SEG-03-R-004","segment":"SEG-03","type":"functional","summary":"make_fullscreen_region creates a Region with x=0,y=0,w=video_w,h=video_h; returns nil if no video-out-params","lines":[542,562],"confidence":1.0}

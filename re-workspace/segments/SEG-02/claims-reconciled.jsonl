@@ -1,0 +1,5 @@
+{"id":"SEG-02-R-001","segment":"SEG-02","type":"functional","summary":"get_video_dimensions caches the OSD-to-video coordinate mapping in _video_dimensions; cache is invalidated by any of 11 observed mpv properties","lines":[341,425],"confidence":1.0}
+{"id":"SEG-02-R-002","segment":"SEG-02","type":"edge-case","summary":"get_video_dimensions returns nil if video-out-params is nil (no video loaded); callers must handle nil","lines":[346,349],"confidence":1.0,"quote":"if not video_params then return nil"}
+{"id":"SEG-02-R-003","segment":"SEG-02","type":"algorithm","summary":"90-degree video rotation is handled by swapping w/h and dw/dh before computing display dimensions","lines":[355,358],"confidence":1.0}
+{"id":"SEG-02-R-004","segment":"SEG-02","type":"functional","summary":"monitor_dimensions registers 11 mp.observe_property calls; these observers persist for the script lifetime","lines":[431,448],"confidence":1.0}
+{"id":"SEG-02-R-005","segment":"SEG-02","type":"algorithm","summary":"split_scaling computes pixel start/end for a scaled/panned/zoomed source, clamping degenerate zero-size case to [0,1]","lines":[395,408],"confidence":0.9}

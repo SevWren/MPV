@@ -1,0 +1,4 @@
+{"id":"SEG-13-R-001","segment":"SEG-13","type":"defect","summary":"formatIds includes 'raw' (L2368) but formats['raw'] is nil; formats['raw'].displayName crash when EncodeOptionsPage is instantiated","lines":[2363,2385],"confidence":0.85}
+{"id":"SEG-13-R-002","segment":"SEG-13","type":"functional","summary":"EncodeOptionsPage builds 11 Option widgets; confirmOpts applies all values to global options table","lines":[2245,2253],"confidence":1.0}
+{"id":"SEG-13-R-003","segment":"SEG-13","type":"functional","summary":"gif_dither option uses visibleCheckFn to show only when output_format=='gif'","lines":[2458,2460],"confidence":1.0}
+{"id":"SEG-13-R-004","segment":"SEG-13","type":"functional","summary":"EncodeOptionsPage keybinds: UP/DOWN navigate options, LEFT/RIGHT change values, ENTER=confirm, ESC=cancel","lines":[2467,2510],"confidence":1.0}

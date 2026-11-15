@@ -1,0 +1,576 @@
+[
+  {
+    "type": "mp",
+    "call": "mp.commandv(",
+    "name": "commandv",
+    "line": 65,
+    "raw": "  return mp.commandv(\"script-message\", \"webm-\" .. tostring(event_name), ...)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.register_script_message(",
+    "name": "register_script_message",
+    "line": 74,
+    "raw": "mp.register_script_message(\"mpv-webm-set-options\", test_set_options)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_osd(",
+    "name": "get_property_osd",
+    "line": 81,
+    "raw": "  local ass = mp.get_property_osd(\"osd-ass-cc/0\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.osd_message(",
+    "name": "osd_message",
+    "line": 83,
+    "raw": "  return mp.osd_message(ass, duration or options.message_duration)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 200,
+    "raw": "    [\"%%f\"] = mp.get_property(\"filename\"),"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 201,
+    "raw": "    [\"%%F\"] = mp.get_property(\"filename/no-ext\"),"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 206,
+    "raw": "    [\"%%T\"] = mp.get_property(\"media-title\"),"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 207,
+    "raw": "    [\"%%M\"] = (mp.get_property_native('aid') and not mp.get_property_native('mute') and hasAudioCodec) and '-audio' or '"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 207,
+    "raw": "    [\"%%M\"] = (mp.get_property_native('aid') and not mp.get_property_native('mute') and hasAudioCodec) and '-audio' or '"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 208,
+    "raw": "    [\"%%R\"] = (options.scale_height ~= -1) and \"-\" .. tostring(options.scale_height) .. \"p\" or \"-\" .. tostring(mp.get_pr"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_bool(",
+    "name": "get_property_bool",
+    "line": 220,
+    "raw": "  if mp.get_property_bool(\"demuxer-via-network\", false) then"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 225,
+    "raw": "    local x = string.gsub(mp.get_property(\"stream-open-filename\", \"\"), string.gsub(mp.get_property(\"filename\", \"\"), \"%W\""
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 225,
+    "raw": "    local x = string.gsub(mp.get_property(\"stream-open-filename\", \"\"), string.gsub(mp.get_property(\"filename\", \"\"), \"%W\""
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_osd_size(",
+    "name": "get_osd_size",
+    "line": 312,
+    "raw": "  local osd_w, osd_h = mp.get_osd_size()"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 345,
+    "raw": "  local video_params = mp.get_property_native(\"video-out-params\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_bool(",
+    "name": "get_property_bool",
+    "line": 350,
+    "raw": "  local keep_aspect = mp.get_property_bool(\"keepaspect\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_number(",
+    "name": "get_property_number",
+    "line": 355,
+    "raw": "  if mp.get_property_number(\"video-rotate\") % 180 == 90 then"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_osd_size(",
+    "name": "get_osd_size",
+    "line": 364,
+    "raw": "  local window_w, window_h = mp.get_osd_size()"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 366,
+    "raw": "    local unscaled = mp.get_property_native(\"video-unscaled\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_number(",
+    "name": "get_property_number",
+    "line": 367,
+    "raw": "    local panscan = mp.get_property_number(\"panscan\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_number(",
+    "name": "get_property_number",
+    "line": 409,
+    "raw": "    local zoom = mp.get_property_number(\"video-zoom\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_number(",
+    "name": "get_property_number",
+    "line": 410,
+    "raw": "    local align_x = mp.get_property_number(\"video-align-x\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_number(",
+    "name": "get_property_number",
+    "line": 411,
+    "raw": "    local pan_x = mp.get_property_number(\"video-pan-x\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_number(",
+    "name": "get_property_number",
+    "line": 413,
+    "raw": "    local align_y = mp.get_property_number(\"video-align-y\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_number(",
+    "name": "get_property_number",
+    "line": 414,
+    "raw": "    local pan_y = mp.get_property_number(\"video-pan-y\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.observe_property(",
+    "name": "observe_property",
+    "line": 446,
+    "raw": "    mp.observe_property(p, \"native\", set_dimensions_changed)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 802,
+    "raw": "      local csp = mp.get_property(\"colormatrix\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 876,
+    "raw": "      local colormatrix = mp.get_property_native(\"video-params/colormatrix\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 1125,
+    "raw": "      if mp.get_property(\"deinterlace\") == \"yes\" then"
+  },
+  {
+    "type": "mp",
+    "call": "mp.add_forced_key_binding(",
+    "name": "add_forced_key_binding",
+    "line": 1226,
+    "raw": "        mp.add_forced_key_binding(key, key, func, {"
+  },
+  {
+    "type": "mp_keybind",
+    "call": "mp.add_forced_key_binding(",
+    "name": "",
+    "line": 1226,
+    "raw": "        mp.add_forced_key_binding(key, key, func, {"
+  },
+  {
+    "type": "mp",
+    "call": "mp.remove_key_binding(",
+    "name": "remove_key_binding",
+    "line": 1236,
+    "raw": "        mp.remove_key_binding(key)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.observe_property(",
+    "name": "observe_property",
+    "line": 1258,
+    "raw": "        mp.observe_property(p, \"native\", self.sizeCallback)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.unobserve_property(",
+    "name": "unobserve_property",
+    "line": 1263,
+    "raw": "        mp.unobserve_property(self.sizeCallback)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_osd_size(",
+    "name": "get_osd_size",
+    "line": 1268,
+    "raw": "      local window_w, window_h = mp.get_osd_size()"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_osd_ass(",
+    "name": "set_osd_ass",
+    "line": 1269,
+    "raw": "      mp.set_osd_ass(window_w, window_h, \"\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.osd_message(",
+    "name": "osd_message",
+    "line": 1270,
+    "raw": "      return mp.osd_message(\"\", 0)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_osd_size(",
+    "name": "get_osd_size",
+    "line": 1332,
+    "raw": "      local window_w, window_h = mp.get_osd_size()"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_osd_ass(",
+    "name": "set_osd_ass",
+    "line": 1337,
+    "raw": "      return mp.set_osd_ass(window_w, window_h, ass.text)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_bool(",
+    "name": "get_property_bool",
+    "line": 1423,
+    "raw": "    audio = not mp.get_property_bool(\"mute\"),"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_bool(",
+    "name": "get_property_bool",
+    "line": 1424,
+    "raw": "    sub = mp.get_property_bool(\"sub-visibility\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 1431,
+    "raw": "  for _, track in ipairs(mp.get_property_native(\"track-list\")) do"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 1526,
+    "raw": "  local mpv_brightness = mp.get_property(\"brightness\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 1527,
+    "raw": "  local mpv_contrast = mp.get_property(\"contrast\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 1528,
+    "raw": "  local mpv_saturation = mp.get_property(\"saturation\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 1542,
+    "raw": "  local prop = mp.get_property(property_name)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 1552,
+    "raw": "  local prop = mp.get_property_native(property_name)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 1579,
+    "raw": "  local speed = mp.get_property_native(\"speed\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 1591,
+    "raw": "  local title = mp.get_property(\"filename/no-ext\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 1598,
+    "raw": "  local vf = mp.get_property_native(\"vf\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 1674,
+    "raw": "  local path = mp.get_property('path')"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property(",
+    "name": "get_property",
+    "line": 1681,
+    "raw": "    if mp.get_property('file-format') == 'hls' then"
+  },
+  {
+    "type": "mp",
+    "call": "mp.command_native(",
+    "name": "command_native",
+    "line": 1683,
+    "raw": "      mp.command_native({"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_mouse_pos(",
+    "name": "get_mouse_pos",
+    "line": 1910,
+    "raw": "      local posX, posY = mp.get_mouse_pos()"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_mouse_pos(",
+    "name": "get_mouse_pos",
+    "line": 1917,
+    "raw": "      local posX, posY = mp.get_mouse_pos()"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_osd_size(",
+    "name": "get_osd_size",
+    "line": 1953,
+    "raw": "      window.w, window.h = mp.get_osd_size()"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_osd_ass(",
+    "name": "set_osd_ass",
+    "line": 1965,
+    "raw": "      return mp.set_osd_ass(window.w, window.h, ass.text)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_osd_size(",
+    "name": "get_osd_size",
+    "line": 2259,
+    "raw": "      local window_w, window_h = mp.get_osd_size()"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_osd_ass(",
+    "name": "set_osd_ass",
+    "line": 2273,
+    "raw": "      return mp.set_osd_ass(window_w, window_h, ass.text)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 2545,
+    "raw": "      local vf = mp.get_property_native(\"vf\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_property_native(",
+    "name": "set_property_native",
+    "line": 2560,
+    "raw": "      mp.set_property_native(\"vf\", vf)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_property_native(",
+    "name": "set_property_native",
+    "line": 2562,
+    "raw": "        mp.set_property_native(\"ab-loop-a\", self.startTime)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_property_native(",
+    "name": "set_property_native",
+    "line": 2563,
+    "raw": "        mp.set_property_native(\"ab-loop-b\", self.endTime)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_property_native(",
+    "name": "set_property_native",
+    "line": 2564,
+    "raw": "        mp.set_property_native(\"time-pos\", self.startTime)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_property_native(",
+    "name": "set_property_native",
+    "line": 2566,
+    "raw": "      return mp.set_property_native(\"pause\", false)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_property(",
+    "name": "set_property",
+    "line": 2569,
+    "raw": "      mp.set_property(\"ab-loop-a\", \"no\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_property(",
+    "name": "set_property",
+    "line": 2570,
+    "raw": "      mp.set_property(\"ab-loop-b\", \"no\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_property_native(",
+    "name": "set_property_native",
+    "line": 2572,
+    "raw": "        mp.set_property_native(prop, value)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_osd_size(",
+    "name": "get_osd_size",
+    "line": 2576,
+    "raw": "      local window_w, window_h = mp.get_osd_size()"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_osd_ass(",
+    "name": "set_osd_ass",
+    "line": 2581,
+    "raw": "      return mp.set_osd_ass(window_w, window_h, ass.text)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 2594,
+    "raw": "        [\"vf\"] = mp.get_property_native(\"vf\"),"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 2595,
+    "raw": "        [\"time-pos\"] = mp.get_property_native(\"time-pos\"),"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 2596,
+    "raw": "        [\"pause\"] = mp.get_property_native(\"pause\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_number(",
+    "name": "get_property_number",
+    "line": 2645,
+    "raw": "      self.startTime = mp.get_property_number(\"time-pos\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_number(",
+    "name": "get_property_number",
+    "line": 2652,
+    "raw": "      self.endTime = mp.get_property_number(\"time-pos\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 2659,
+    "raw": "      if mp.get_property_native(\"duration\") then"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_property_native(",
+    "name": "get_property_native",
+    "line": 2661,
+    "raw": "        self.endTime = mp.get_property_native(\"duration\")"
+  },
+  {
+    "type": "mp",
+    "call": "mp.get_osd_size(",
+    "name": "get_osd_size",
+    "line": 2672,
+    "raw": "      local window_w, window_h = mp.get_osd_size()"
+  },
+  {
+    "type": "mp",
+    "call": "mp.set_osd_ass(",
+    "name": "set_osd_ass",
+    "line": 2684,
+    "raw": "      return mp.set_osd_ass(window_w, window_h, ass.text)"
+  },
+  {
+    "type": "mp",
+    "call": "mp.add_key_binding(",
+    "name": "add_key_binding",
+    "line": 2840,
+    "raw": "mp.add_key_binding(options.keybind, \"display-webm-encoder\", (function()"
+  },
+  {
+    "type": "mp_keybind",
+    "call": "mp.add_key_binding(",
+    "name": "",
+    "line": 2840,
+    "raw": "mp.add_key_binding(options.keybind, \"display-webm-encoder\", (function()"
+  },
+  {
+    "type": "mp",
+    "call": "mp.register_event(",
+    "name": "register_event",
+    "line": 2849,
+    "raw": "mp.register_event(\"file-loaded\", (function()"
+  }
+]

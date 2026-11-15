@@ -1,0 +1,4 @@
+{"id":"SEG-11-R-001","segment":"SEG-11","type":"functional","summary":"CropPage draws crop overlay as four dark rectangles (letterbox) around the selected region using ASS draw commands","lines":[1933,1950],"confidence":1.0}
+{"id":"SEG-11-R-002","segment":"SEG-11","type":"functional","summary":"CropPage keybinds: '1'=setPointA, '2'=setPointB, 'r'=reset, 'ESC'=cancel, 'ENTER'=finish","lines":[1974,2010],"confidence":1.0}
+{"id":"SEG-11-R-003","segment":"SEG-11","type":"functional","summary":"cancel calls callback(nil); finish creates Region from pointA/B and calls callback(region)","lines":[1923,1932],"confidence":1.0}
+{"id":"SEG-11-R-004","segment":"SEG-11","type":"edge-case","summary":"Zero-dimension crop (pointA == pointB) passes is_valid() check but would produce invalid crop filter params","lines":[1927,1932],"confidence":0.9}
