@@ -1,0 +1,61 @@
+--- a/scripts/webm.lua
++++ b/scripts/webm.lua
+@@ -1707,7 +1707,11 @@ encode = function(region, startTime, endTime)
+   local command = {
+     "mpv",
+     path,
++    "--no-config",
++    "--load-scripts=no",
++    "--keep-open=no",
++    "--hwdec=no",
+     "--start=" .. seconds_to_time_string(startTime, false, true),
+     "--end=" .. seconds_to_time_string(endTime, false, true),
+     "--loop-file=no",
+     "--no-pause"
+   }
+
+--- PATCH NOTES ---
+-- File: scripts/webm.lua (compiled from webm.moon via moonc)
+-- Apply to: re-workspace/canonical/webm.lf.lua for the canonical source
+--           OR scripts/webm.lua in the user's mpv scripts directory
+--
+-- Four flags are inserted at the START of the command array, immediately after
+-- the input path argument. They must appear before codec/track flags to ensure
+-- they take effect before any conflicting inherited configuration.
+--
+-- Flag rationale:
+--
+--   --no-config
+--     Prevents the encode subprocess from reading the user's mpv.conf.
+--     The encode subprocess is a headless ffmpeg-driven process, not a player.
+--     Player settings (OSD, scripting, audio output, display sync) are not
+--     appropriate for this context and can cause silent failures.
+--
+--   --load-scripts=no
+--     Prevents auto-loading of user scripts into the encode subprocess.
+--     Without this, webm.lua itself loads inside the encoder (recursion risk),
+--     ytdl_hook.lua may try to call yt-dlp on the input path, and autoload.lua
+--     may queue additional files for playback.
+--
+--   --keep-open=no
+--     The user's mpv.conf may contain keep-open=yes (keep player open after
+--     end of file, waiting for user input). In an encode subprocess this means
+--     the process never exits after the encode completes, the output file is
+--     never finalized (moov atom not written for MP4), and the user sees a
+--     "hang" at 0% CPU. This flag explicitly overrides that behaviour.
+--
+--   --hwdec=no
+--     Disables hardware-accelerated decoding in the encoder subprocess.
+--     The user's mpv.conf may contain hwdec=auto-copy (GPU decode). Running
+--     GPU decode simultaneously in both player and encoder can exhaust GPU
+--     decoder slots, causing the encoder to stall or fail silently.
+--     Software decode is safer and more portable for encode subprocesses.
+--
+-- Ordering note: --no-config must precede any option it is meant to suppress.
+-- In practice, mpv processes command-line options before reading config files,
+-- but --no-config as a command-line flag is processed at startup and suppresses
+-- the config-read phase entirely regardless of position. Placing it first makes
+-- intent clear and matches mpv documentation conventions.
+--
+-- This patch does NOT fix FIND-001 (bitrate variable name bug at L1779-1780).
+-- Apply FIND-001-v2-strict-bitrate-fix.patch separately for that bug.

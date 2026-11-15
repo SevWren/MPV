@@ -1,0 +1,61 @@
+--- a/webm.lf.lua
++++ b/webm.lf.lua
+@@ -1788,10 +1788,32 @@ encode = function(region, startTime, endTime)
+   end
+-  for token in string.gmatch(options.additional_flags, "[^%s]+") do
+-    command[#command + 1] = token
+-  end
+-  if not options.strict_filesize_constraint then
+-    for token in string.gmatch(options.non_strict_additional_flags, "[^%s]+") do
+-      command[#command + 1] = token
+-    end
++  -- ISSUE-002 FIX: Validate that additional_flags tokens start with "--".
++  -- A bare token like "cq-level=28" (without leading "--") is treated by mpv as
++  -- a positional argument, i.e. a second input file path.  This causes mpv to
++  -- attempt to open "cq-level=28" as a media file.  The encode hangs or errors
++  -- depending on mpv's error-handling mode for missing files.
++  --
++  -- Evidence: log:1282 shows args="cq-level=28" as a bare positional arg.
++  --           webm.lf.lua:24 shows non_strict_additional_flags default = "cq-level=28"
++  --           webm.lf.lua:1794 token loop adds token verbatim with no "--" check.
++  local function add_flags_validated(flag_string, source_name)
++    for token in string.gmatch(flag_string, "[^%s]+") do
++      if token:sub(1, 2) ~= "--" then
++        msg.warn(
++          "Ignoring invalid flag in " .. source_name .. ": '" .. token ..
++          "' — flags must start with '--'.  " ..
++          "Did you mean '--" .. token .. "'?"
++        )
++      else
++        command[#command + 1] = token
++      end
++    end
++  end
++
++  add_flags_validated(options.additional_flags, "additional_flags")
++  if not options.strict_filesize_constraint then
++    add_flags_validated(options.non_strict_additional_flags, "non_strict_additional_flags")
+     if options.crf >= 0 then
+       append(command, {
+         "--ovcopts-add=crf=" .. tostring(options.crf)
+
+--- PATCH NOTES ---
+-- Root cause of TEST-A (log:1282):
+--   webm.conf contains:
+--     non_strict_additional_flags= cq-level=28
+--   (the leading space is stripped by the gmatch tokenizer; the token is "cq-level=28")
+--   strict_filesize_constraint=yes means additional_flags=" cq-level=28" is in the
+--   STRICT path, not non_strict.  But the actual log (1281/1282) shows cq-level=28
+--   IS present, meaning strict_filesize_constraint was YES but the flag was added from
+--   options.additional_flags=" cq-level=28" (note the space before "cq-level" in
+--   the webm.conf value "additional_flags= cq-level=28").
+--
+--   Either way, both paths (additional_flags and non_strict_additional_flags) have the
+--   same vulnerability: tokens are appended verbatim with no "--" prefix check.
+--
+-- The correct webm.conf fix for the user is to prefix with --:
+--   additional_flags=--ovcopts-add=cq-level=28
+-- or for non-strict mode:
+--   non_strict_additional_flags=--ovcopts-add=cq-level=28
+--
+-- This code patch makes the validator defensive against misconfigured values.

@@ -1,0 +1,61 @@
+--- a/scripts/webm.lua
++++ b/scripts/webm.lua
+@@ -1790,7 +1790,16 @@ encode = function(region, startTime, endTime)
+-  for token in string.gmatch(options.additional_flags, "[^%s]+") do
+-    command[#command + 1] = token
+-  end
++  for token in string.gmatch(options.additional_flags, "[^%s]+") do
++    if string.sub(token, 1, 2) == "--" then
++      command[#command + 1] = token
++    else
++      mp.msg.warn("additional_flags: token '" .. token .. "' does not start with '--'; " ..
++                  "skipping. All tokens in additional_flags must be valid mpv options " ..
++                  "beginning with '--'. Example: --ovcopts-add=crf=28")
++    end
++  end
+   if not options.strict_filesize_constraint then
+-    for token in string.gmatch(options.non_strict_additional_flags, "[^%s]+") do
+-      command[#command + 1] = token
+-    end
++    for token in string.gmatch(options.non_strict_additional_flags, "[^%s]+") do
++      if string.sub(token, 1, 2) == "--" then
++        command[#command + 1] = token
++      else
++        mp.msg.warn("non_strict_additional_flags: token '" .. token .. "' does not start " ..
++                    "with '--'; skipping.")
++      end
++    end
+
+--- PATCH NOTES ---
+-- File: scripts/webm.lua (applies to encode() function, L1790-1796)
+-- Also applies to: re-workspace/canonical/webm.lf.lua (same lines)
+--
+-- Problem (FIND-011):
+--   The existing code blindly appends every whitespace-separated token from
+--   additional_flags and non_strict_additional_flags to the encode command array.
+--   If a token lacks a leading '--' it is treated by mpv as a positional argument
+--   (a filename to play), not as an option flag. The user's config contained:
+--     additional_flags= cq-level=28
+--   which produced the bare token "cq-level=28" — mpv tried to open a file named
+--   "cq-level=28", failed, and the encoder exited with code 1.
+--
+-- Fix:
+--   Before appending each token, check whether it begins with '--'. If it does not,
+--   emit a warning via mp.msg.warn() and skip the token. The warning is visible in
+--   the mpv console (and in the log file if log-file= is configured) so the user
+--   can identify and correct their configuration.
+--
+-- Design choice — SKIP vs PREPEND:
+--   An alternative would be to prepend '--' automatically: "--" .. token.
+--   This is NOT done here because:
+--     1. The token may be a bare value (e.g., a filename accidentally entered),
+--        not a flag name. Prepending '--' would create a nonsense flag.
+--     2. It silently modifies user intent. A warning and skip forces the user to
+--        supply the correct flag syntax explicitly.
+--     3. Some tokens may be codec suboptions (e.g., "crf=28" without "--ovcopts-add=")
+--        which cannot be corrected by simply prepending "--".
+--
+-- The same validation is applied to non_strict_additional_flags for consistency.
+--
+-- Impact: Zero impact on correctly-formatted configs (all tokens start with '--').
+--         Protects against silent encode failures from misconfigured flags.

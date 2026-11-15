@@ -1,0 +1,63 @@
+--- a/webm.lf.lua
++++ b/webm.lf.lua
+@@ -1704,6 +1704,12 @@ encode = function(region, startTime, endTime)
+   local command = {
+     "mpv",
+     path,
++    -- ISSUE-002 FIX: Isolate the encode subprocess from the user's mpv.conf and
++    -- script directory.  Without these flags the subprocess inherits every option
++    -- set in mpv.conf (keep-open=yes, hwdec=auto-copy, loop-playlist=inf, etc.)
++    -- and loads all user scripts including autoload.lua, any of which can prevent
++    -- the subprocess from exiting and finalizing the output file.
++    "--no-config",
++    "--load-scripts=no",
++    "--keep-open=no",
++    "--loop-playlist=no",
++    "--save-position-on-quit=no",
++    "--hwdec=no",
+     "--start=" .. seconds_to_time_string(startTime, false, true),
+     "--end=" .. seconds_to_time_string(endTime, false, true),
+     "--loop-file=no",
+
+--- PATCH NOTES ---
+-- Evidence for each added flag:
+--
+-- --no-config
+--   Log line 29: subprocess inherits C:\Users\mmuel\AppData\Roaming/mpv/mpv.conf
+--   Log line 62: mpv.conf sets keep-open=yes
+--   Log line 77: mpv.conf (via high-quality profile) sets hwdec=auto-copy
+--   Log line 794: extension.mp4 profile (auto-loaded on .mp4 files) sets loop-playlist=inf
+--   webm.lf.lua: 0 occurrences of "no-config" (confirmed by feedback loop test TEST-C)
+--
+-- --load-scripts=no
+--   Log lines 1323-1368: autoload.lua builds a 25-file playlist in D:\Videos\ for the
+--   parent process; without this flag the same would happen in the encode subprocess,
+--   causing it to encode 25 files instead of one (or hang on incompatible file types
+--   such as image.svg, image.jpg at lines 1329-1330).
+--   webm.lf.lua: 0 occurrences of "load-scripts" (confirmed by feedback loop test TEST-D)
+--
+-- --keep-open=no
+--   Log line 62: keep-open=yes set in mpv.conf.
+--   This is the PRIMARY hang mechanism: after encoding completes, mpv subprocess stays
+--   open indefinitely waiting for user input, never reaching the cleanup path that
+--   writes the MP4 moov atom (the final mux step).
+--   webm.lf.lua: 0 occurrences of "keep-open" (confirmed by feedback loop test TEST-B)
+--
+-- --loop-playlist=no
+--   Log line 794: extension.mp4 profile sets loop-playlist=inf.
+--   The encode command already includes --loop-file=no but NOT --loop-playlist=no.
+--   After encoding finishes (if keep-open doesn't hang it first), the subprocess
+--   would loop the playlist indefinitely.
+--
+-- --save-position-on-quit=no
+--   Log line 61: save-position-on-quit=yes set in mpv.conf.
+--   Without this flag the encode subprocess writes watch_later state files,
+--   polluting the user's resume database with encode-subprocess positions.
+--
+-- --hwdec=no
+--   Log line 77: hwdec=auto-copy (via high-quality profile).
+--   Log line 1374: parent process uses d3d11va-copy.
+--   Both parent and encode subprocess would compete for the same D3D11 hardware
+--   decoder context.  For encode (re-encode to libx264), hardware decode is not
+--   necessary and creates contention risk on Windows.
+--   webm.lf.lua: 0 occurrences of "hwdec" (confirmed by feedback loop test TEST-E)
