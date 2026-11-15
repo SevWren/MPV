@@ -14,14 +14,14 @@ local options = {
   strict_filesize_constraint = false,
   strict_bitrate_multiplier = 0.95,
   strict_audio_bitrate = 128,
-  output_format = "mp4 (h264/AAC)",
+  output_format = "mp4",
   twopass = false,
   apply_current_filters = false,
   write_filename_on_metadata = false,
   libvpx_threads = 4,
   additional_flags = "",
   crf = -1,
-  non_strict_additional_flags = "cq-level=28",
+  non_strict_additional_flags = "",
   display_progress = "true",
   font_size = 28,
   margin = 10,
@@ -67,8 +67,16 @@ end
 local test_set_options
 test_set_options = function(new_options_json)
   local new_options = utils.parse_json(new_options_json)
+  if type(new_options) ~= "table" then
+    msg.warn("mpv-webm-set-options: invalid JSON payload (expected object)")
+    return
+  end
   for k, v in pairs(new_options) do
-    options[k] = v
+    if options[k] ~= nil then
+      options[k] = v
+    else
+      msg.warn("mpv-webm-set-options: ignoring unknown option key: " .. tostring(k))
+    end
   end
 end
 mp.register_script_message("mpv-webm-set-options", test_set_options)
@@ -617,7 +625,7 @@ do
   local _base_0 = {
     get_duration = function(self)
       local big_endian_binary_duration = reverse(self.binary_duration)
-      return read_double(reversed_binary_duration) / duration_multiplier
+      return read_double(big_endian_binary_duration) / duration_multiplier
     end,
     set_duration = function(self, duration)
       local big_endian_binary_duration = write_double(duration * duration_multiplier)
@@ -1782,8 +1790,8 @@ encode = function(region, startTime, endTime)
       if options.strict_filesize_constraint then
         local type = format.videoCodec ~= "" and "ovc" or "oac"
         append(command, {
-          "--" .. tostring(type) .. "opts-add=minrate=" .. tostring(bitrate) .. "k",
-          "--" .. tostring(type) .. "opts-add=maxrate=" .. tostring(bitrate) .. "k"
+          "--" .. tostring(type) .. "opts-add=minrate=" .. tostring(video_bitrate) .. "k",
+          "--" .. tostring(type) .. "opts-add=maxrate=" .. tostring(video_bitrate) .. "k"
         })
       end
     else
@@ -1868,6 +1876,10 @@ encode = function(region, startTime, endTime)
   msg.info("Encoding to", out_path)
   msg.verbose("Command line:", table.concat(command, " "))
   if options.run_detached then
+    os.remove(get_pass_logfile_path(out_path))
+    if is_temporary then
+      os.remove(path)
+    end
     message("Started encode, process was detached.")
     return utils.subprocess_detached({
       args = command
@@ -2556,6 +2568,11 @@ do
   local _parent_0 = Page
   local _base_0 = {
     prepare = function(self)
+      self.originalProperties = {
+        ["vf"] = mp.get_property_native("vf"),
+        ["time-pos"] = mp.get_property_native("time-pos"),
+        ["pause"] = mp.get_property_native("pause")
+      }
       local vf = mp.get_property_native("vf")
       vf[#vf + 1] = {
         name = "sub"
@@ -2604,11 +2621,7 @@ do
   _class_0 = setmetatable({
     __init = function(self, callback, region, startTime, endTime)
       self.callback = callback
-      self.originalProperties = {
-        ["vf"] = mp.get_property_native("vf"),
-        ["time-pos"] = mp.get_property_native("time-pos"),
-        ["pause"] = mp.get_property_native("pause")
-      }
+      self.originalProperties = {}
       self.keybinds = {
         ["ESC"] = (function()
           local _base_1 = self
