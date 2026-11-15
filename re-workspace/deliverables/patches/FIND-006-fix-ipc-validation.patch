@@ -1,0 +1,76 @@
+--- a/scripts/webm.lua
++++ b/scripts/webm.lua
+@@ -63,12 +63,65 @@ local emit_event
+ emit_event = function(event_name, ...)
+   return mp.commandv("script-message", "webm-" .. tostring(event_name), ...)
+ end
++
++-- Allowlist of valid option keys with their expected Lua type.
++-- Keys not in this table are silently dropped; values of wrong type are rejected.
++local _valid_options = {
++  keybind                    = "string",
++  output_directory           = "string",
++  run_detached               = "boolean",
++  output_template            = "string",
++  scale_height               = "number",
++  fps                        = "number",
++  target_filesize            = "number",
++  strict_filesize_constraint = "boolean",
++  strict_bitrate_multiplier  = "number",
++  strict_audio_bitrate       = "number",
++  output_format              = "string",
++  twopass                    = "boolean",
++  apply_current_filters      = "boolean",
++  write_filename_on_metadata = "boolean",
++  libvpx_threads             = "number",
++  additional_flags           = "string",
++  crf                        = "number",
++  non_strict_additional_flags = "string",
++  display_progress           = "string",
++  font_size                  = "number",
++  margin                     = "number",
++  message_duration           = "number",
++  gif_dither                 = "number",
++  force_square_pixels        = "boolean",
++}
++
+ local test_set_options
+ test_set_options = function(new_options_json)
+   local new_options = utils.parse_json(new_options_json)
++  if type(new_options) ~= "table" then
++    msg.warn("mpv-webm-set-options: invalid JSON payload (expected object), ignoring")
++    return
++  end
+   for k, v in pairs(new_options) do
+-    options[k] = v
++    local expected_type = _valid_options[k]
++    if expected_type == nil then
++      msg.warn("mpv-webm-set-options: unknown option key '" .. tostring(k) .. "', ignoring")
++    elseif type(v) ~= expected_type then
++      -- JSON numbers are always Lua numbers; booleans are booleans.
++      -- Coerce string "true"/"false" to boolean for convenience, reject rest.
++      if expected_type == "boolean" and v == "true" then
++        options[k] = true
++        msg.info("mpv-webm-set-options: coerced string 'true' -> boolean for '" .. k .. "'")
++      elseif expected_type == "boolean" and v == "false" then
++        options[k] = false
++        msg.info("mpv-webm-set-options: coerced string 'false' -> boolean for '" .. k .. "'")
++      elseif expected_type == "number" and type(v) == "string" then
++        local n = tonumber(v)
++        if n ~= nil then
++          options[k] = n
++          msg.info("mpv-webm-set-options: coerced string '" .. v .. "' -> number for '" .. k .. "'")
++        else
++          msg.warn("mpv-webm-set-options: type mismatch for '" .. k ..
++                   "' (expected " .. expected_type .. ", got string '" .. tostring(v) .. "'), ignoring")
++        end
++      else
++        msg.warn("mpv-webm-set-options: type mismatch for '" .. k ..
++                 "' (expected " .. expected_type .. ", got " .. type(v) .. "), ignoring")
++      end
++    else
++      options[k] = v
++    end
+   end
+ end
+ mp.register_script_message("mpv-webm-set-options", test_set_options)

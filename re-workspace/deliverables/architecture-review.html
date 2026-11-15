@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>webm.lua — Architecture Review</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+<style>
+  .mermaid svg { max-height: 320px; }
+  .diagram-col { min-height: 320px; }
+</style>
+</head>
+<body class="bg-stone-50 text-slate-900 font-sans p-6 max-w-6xl mx-auto">
+
+<!-- HEADER -->
+<header class="mb-8 border-b border-slate-200 pb-4">
+  <h1 class="text-2xl font-bold tracking-tight">webm.lua — Architecture Review</h1>
+  <p class="text-sm text-slate-500 mt-1">Repo: MPV/scripts/webm.lua &nbsp;·&nbsp; 2856 lines &nbsp;·&nbsp; 2026-11-15</p>
+  <div class="mt-3 flex flex-wrap gap-3 text-xs uppercase tracking-wider font-semibold">
+    <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded">Strong — worth doing now</span>
+    <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded">Worth exploring — investigate first</span>
+    <span class="bg-slate-200 text-slate-700 px-2 py-1 rounded">Speculative — low ROI risk</span>
+    <span class="bg-red-100 text-red-700 px-2 py-1 rounded">Leakage — seam crossed</span>
+  </div>
+  <div class="mt-2 text-xs text-slate-500">
+    Vocabulary: <strong>Module</strong> = interface + implementation &nbsp;·&nbsp;
+    <strong>Depth</strong> = leverage behind small interface &nbsp;·&nbsp;
+    <strong>Seam</strong> = where callers touch a module &nbsp;·&nbsp;
+    <strong>Adapter</strong> = concrete seam implementation
+  </div>
+</header>
+
+<!-- CARD 1: encode() pipeline -->
+<article class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 mb-6">
+  <h2 class="text-lg font-bold mb-2">1. Deepen the encode() pipeline</h2>
+  <div class="flex flex-wrap gap-2 mb-3 text-xs uppercase tracking-wider font-semibold">
+    <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded">Strong</span>
+    <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded">In-process</span>
+    <span class="text-slate-400">Lines L1696–L1885 (189 lines, one function)</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <!-- BEFORE -->
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">Before — shallow monolith</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef leak stroke:#ef4444,stroke-width:2px,color:#ef4444
+  classDef box fill:#f1f5f9,stroke:#94a3b8
+
+  A([encode]) --> B[format lookup]
+  A --> C[find_path]
+  A --> D[get_active_tracks]
+  A --> E[get_video_encode_flags]
+  A --> F[calculate_bitrate]
+  A --> G[format_filename]
+  A --> H[twopass logic]
+  A --> I[subprocess call]
+  A --> J[cleanup]
+  B:::leak
+  H:::leak
+  J:::leak
+      </div>
+    </div>
+    <!-- AFTER -->
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">After — deep pipeline module</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef deep fill:#d1fae5,stroke:#059669
+
+  caller([UI caller]) --> P[encode_pipeline\nrun&#40;region, t0, t1&#41;]
+  P --> Q[build_command\ninternal]
+  P --> R[execute_pass\ninternal]
+  P --> S[cleanup\ninternal]
+  P:::deep
+      </div>
+    </div>
+  </div>
+
+  <!-- Mass diagram -->
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Interface vs implementation mass — Before</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-red-200 w-20" style="height:10%"></div>
+        <div class="bg-slate-300 w-20" style="height:90%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-20 text-center text-slate-500">Interface</span>
+        <span class="w-20 text-center text-slate-500">Impl (189 L)</span>
+      </div>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Interface vs implementation mass — After</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-emerald-300 w-20" style="height:15%"></div>
+        <div class="bg-slate-300 w-20" style="height:85%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-20 text-center text-slate-500">3-entry seam</span>
+        <span class="w-20 text-center text-slate-500">Impl unchanged</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-sm mb-2"><strong>Problem:</strong> encode() is 189 lines with no internal seams — format lookup, flag assembly, two-pass branching, subprocess dispatch, and file cleanup are unseparated, so a bug in any one concept requires reading all 189 lines.</p>
+  <p class="text-sm mb-3"><strong>Solution:</strong> Extract a three-entry encode pipeline module (build, execute, cleanup) hiding all pass-management and subprocess choice behind one seam.</p>
+  <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
+    <li>Depth: 189 lines behind 3-entry interface</li>
+    <li>Locality: bitrate bug (FIND-001) lives in one place</li>
+    <li>Deletion test passes: complexity doesn't scatter</li>
+    <li>Two-pass logic contained at one seam</li>
+    <li>Testable without mpv process</li>
+  </ul>
+</article>
+
+<!-- CARD 2: Format registry -->
+<article class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 mb-6">
+  <h2 class="text-lg font-bold mb-2">2. Explicit format registry seam</h2>
+  <div class="flex flex-wrap gap-2 mb-3 text-xs uppercase tracking-wider font-semibold">
+    <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded">Strong</span>
+    <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded">In-process</span>
+    <span class="text-slate-400">Lines L745–L1216 (471 lines, 7 classes)</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">Before — implicit duck-typed protocol</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef leak stroke:#ef4444,stroke-width:2px,color:#ef4444
+
+  encode([encode&#40;&#41;]) -- "formats[key] nil crash" --> reg[(formats table)]
+  reg -- duck call --> VP8[WebmVP8]
+  reg -- duck call --> VP9[WebmVP9]
+  reg -- duck call --> MP4[MP4]
+  reg -- duck call --> GIF[GIF]
+  reg -- "formats['raw']" --> CRASH([nil crash FIND-002]):::leak
+      </div>
+    </div>
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">After — validated registry with explicit interface</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef deep fill:#d1fae5,stroke:#059669
+
+  encode([encode&#40;&#41;]) --> R[format_registry\nlookup&#40;key&#41;]
+  R -- "validated Format" --> VP8[WebmVP8]
+  R -- "validated Format" --> VP9[WebmVP9]
+  R -- "validated Format" --> MP4[MP4]
+  R -- "validated Format" --> GIF[GIF]
+  R:::deep
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Registry depth — Before</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-red-200 w-20" style="height:5%"></div>
+        <div class="bg-slate-300 w-20" style="height:95%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-20 text-center text-slate-500">No interface</span>
+        <span class="w-20 text-center text-slate-500">471 L impl</span>
+      </div>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Registry depth — After</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-emerald-300 w-20" style="height:20%"></div>
+        <div class="bg-slate-300 w-20" style="height:80%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-20 text-center text-slate-500">1 lookup seam</span>
+        <span class="w-20 text-center text-slate-500">Impl unchanged</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-amber-50 border border-amber-200 rounded p-3 mb-3 text-xs text-amber-800">
+    <strong>Defect connection:</strong> FIND-002 (formats['raw'] nil crash) and FIND-003 (output_format default mismatch) both stem from the absent seam — the registry has no validation, so callers crash on bad keys silently.
+  </div>
+
+  <p class="text-sm mb-2"><strong>Problem:</strong> The formats table is a bare global with no lookup contract, causing nil crashes (FIND-002) when callers pass unregistered keys.</p>
+  <p class="text-sm mb-3"><strong>Solution:</strong> Add a lookup() function at the registry seam that validates keys and returns a typed Format, eliminating nil dereferences at all call sites.</p>
+  <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
+    <li>Fixes FIND-002 nil crash at seam</li>
+    <li>Explicit interface replaces duck-typing</li>
+    <li>Locality: format addition/removal in one place</li>
+    <li>Depth: validation logic behind single entry point</li>
+    <li>Deletion test: complexity leaves callers otherwise</li>
+  </ul>
+</article>
+
+<!-- CARD 3: subprocess execution -->
+<article class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 mb-6">
+  <h2 class="text-lg font-bold mb-2">3. Deepen subprocess execution paths</h2>
+  <div class="flex flex-wrap gap-2 mb-3 text-xs uppercase tracking-wider font-semibold">
+    <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded">Strong</span>
+    <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded">Ports &amp; Adapters</span>
+    <span class="text-slate-400">Lines L271–L310 + L1856–L1870</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">Before — two shallow wrappers, OS choice scattered</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef leak stroke:#ef4444,stroke-width:2px,color:#ef4444
+
+  encode([encode&#40;&#41;]) -- "run_detached branch" --> DET[utils.subprocess_detached]:::leak
+  encode -- "else branch" --> SUB[run_subprocess\nutilssubprocess]
+  ewp([EncodeWithProgress]) --> SUB
+  passone([twopass first pass]) --> SUB
+  SUB -- "or popen" --> POP[run_subprocess_popen\nio.popen]:::leak
+      </div>
+    </div>
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">After — one deep process module</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef deep fill:#d1fae5,stroke:#059669
+
+  encode([encode&#40;&#41;]) --> PM[process\nrun&#40;args, mode&#41;]
+  ewp([EncodeWithProgress]) --> PM
+  passone([twopass]) --> PM
+  PM -- "adapter A" --> SYS[utils.subprocess]
+  PM -- "adapter B" --> DET[utils.subprocess_detached]
+  PM -- "adapter C" --> POP[io.popen]
+  PM:::deep
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Process seam mass — Before</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-red-200 w-20" style="height:8%"></div>
+        <div class="bg-slate-300 w-20" style="height:30%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-20 text-center text-slate-500">Interface</span>
+        <span class="w-20 text-center text-slate-500">Thin wrappers</span>
+      </div>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Process seam mass — After</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-emerald-300 w-20" style="height:20%"></div>
+        <div class="bg-slate-300 w-20" style="height:70%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-20 text-center text-slate-500">1 entry, 3 adapters</span>
+        <span class="w-20 text-center text-slate-500">OS + mode logic</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-sm mb-2"><strong>Problem:</strong> Three execution paths (subprocess, detached, popen) are chosen by scattered if-branches across encode() and EncodeWithProgress, so changing execution strategy requires touching multiple call sites.</p>
+  <p class="text-sm mb-3"><strong>Solution:</strong> One process module with a run(args, mode) entry point hiding all three execution strategies behind a seam with three adapters (the real seam rule is satisfied).</p>
+  <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
+    <li>Three real adapters justify the seam</li>
+    <li>Depth: OS/mode selection behind one call</li>
+    <li>Temp-file leak (FIND-007) localized here</li>
+    <li>Testable: swap adapter in tests</li>
+    <li>Locality: Windows vs POSIX escaping isolated</li>
+  </ul>
+</article>
+
+<!-- CARD 4: flags pipeline -->
+<article class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 mb-6">
+  <h2 class="text-lg font-bold mb-2">4. Deepen the options-to-flags pipeline</h2>
+  <div class="flex flex-wrap gap-2 mb-3 text-xs uppercase tracking-wider font-semibold">
+    <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded">Worth exploring</span>
+    <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded">In-process</span>
+    <span class="text-slate-400">Lines L1500–L1672 (172 lines, 8 shallow functions)</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">Before — 8 shallow flag builders called flat</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef shallow fill:#fef3c7,stroke:#d97706
+
+  encode([encode&#40;&#41;]) --> GVE[get_video_encode_flags]
+  GVE --> GPO[get_playback_options]:::shallow
+  GVE --> GVF[get_video_filters]:::shallow
+  GVE --> GSF[get_speed_flags]:::shallow
+  GVF --> GSC[get_scale_filters]:::shallow
+  GVF --> GFP[get_fps_filters]:::shallow
+  GVF --> GCB[get_contrast_brightness]:::shallow
+      </div>
+    </div>
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">After — flag_builder module, two entry points</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef deep fill:#d1fae5,stroke:#059669
+
+  encode([encode&#40;&#41;]) --> FB[flag_builder\nvideo_flags&#40;format,region&#41;\nplayback_flags&#40;&#41;]
+  FB -- "internal" --> filters[filter chain assembly]
+  FB -- "internal" --> bitrate[bitrate calculation]
+  FB:::deep
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Flag builder depth — Before</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-amber-200 w-6" style="height:30%"></div>
+        <div class="bg-amber-200 w-6" style="height:25%"></div>
+        <div class="bg-amber-200 w-6" style="height:20%"></div>
+        <div class="bg-amber-200 w-6" style="height:15%"></div>
+        <div class="bg-amber-200 w-6" style="height:18%"></div>
+        <div class="bg-amber-200 w-6" style="height:12%"></div>
+        <div class="bg-amber-200 w-6" style="height:22%"></div>
+        <div class="bg-amber-200 w-6" style="height:14%"></div>
+      </div>
+      <p class="text-xs text-slate-400 mt-1">8 shallow functions, exposed individually</p>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Flag builder depth — After</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-emerald-300 w-16" style="height:40%"></div>
+        <div class="bg-slate-300 w-16" style="height:95%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-16 text-center text-slate-500">2 entry pts</span>
+        <span class="w-16 text-center text-slate-500">172 L hidden</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-sm mb-2"><strong>Problem:</strong> Eight shallow flag-building functions are individually visible at the top level, so a caller assembling flags must know which 8 to call and in what order.</p>
+  <p class="text-sm mb-3"><strong>Solution:</strong> Group into a flag_builder module with two entry points (video_flags, playback_flags), hiding ordering dependencies behind the seam.</p>
+  <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
+    <li>Ordering constraint hidden at seam</li>
+    <li>Depth: 172 lines behind 2 calls</li>
+    <li>FIND-009 (flag tokenization) localized</li>
+    <li>Leverage: callers gain simpler interface</li>
+  </ul>
+</article>
+
+<!-- CARD 5: FirstpassStats binary I/O -->
+<article class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 mb-6">
+  <h2 class="text-lg font-bold mb-2">5. Deepen FirstpassStats binary I/O</h2>
+  <div class="flex flex-wrap gap-2 mb-3 text-xs uppercase tracking-wider font-semibold">
+    <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded">Worth exploring</span>
+    <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded">Local-substitutable</span>
+    <span class="text-slate-400">Lines L563–L744 (181 lines)</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">Before — manual IEEE-754, exposed internals</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef leak stroke:#ef4444,stroke-width:2px,color:#ef4444
+
+  twopass([twopass path]) --> RL[read_logfile_into_stats_array]
+  RL --> RD[read_double\nIEEE-754 manual]:::leak
+  twopass --> WL[write_logfile_from_stats_array]
+  WL --> WD[write_double\nIEEE-754 manual]:::leak
+  RD -- "FIND-004 bug" --> CRASH([wrong var name]):::leak
+      </div>
+    </div>
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">After — stats module, opaque binary format</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef deep fill:#d1fae5,stroke:#059669
+
+  twopass([twopass path]) --> SM[stats_io\nread&#40;path&#41;\nwrite&#40;path, stats&#41;\npatch&#40;path, duration&#41;]
+  SM -- "hidden" --> IEEE[IEEE-754 impl]
+  SM -- "hidden" --> B64[base64 codec]
+  SM -- "hidden" --> FS[file I/O]
+  SM:::deep
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Binary I/O depth — Before</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-red-200 w-20" style="height:5%"></div>
+        <div class="bg-slate-300 w-20" style="height:85%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-20 text-center text-slate-500">No seam</span>
+        <span class="w-20 text-center text-slate-500">181 L exposed</span>
+      </div>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Binary I/O depth — After</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-emerald-300 w-20" style="height:20%"></div>
+        <div class="bg-slate-300 w-20" style="height:80%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-20 text-center text-slate-500">3-entry seam</span>
+        <span class="w-20 text-center text-slate-500">Format hidden</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-sm mb-2"><strong>Problem:</strong> Manual IEEE-754 read_double/write_double are exposed globals alongside FirstpassStats, so a correctness bug (FIND-004: wrong variable name) requires understanding 181 lines of binary format detail.</p>
+  <p class="text-sm mb-3"><strong>Solution:</strong> A stats_io module with read/write/patch entry points hides the binary format, IEEE-754 math, and base64 codec behind a stable seam.</p>
+  <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
+    <li>FIND-004 bug isolated at seam</li>
+    <li>Binary format replaceable without caller changes</li>
+    <li>Depth: 181 lines behind 3-entry interface</li>
+    <li>Testable with synthetic byte arrays</li>
+  </ul>
+</article>
+
+<!-- CARD 6: Page lifecycle -->
+<article class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 mb-6">
+  <h2 class="text-lg font-bold mb-2">6. Deepen Page lifecycle (show/hide/keybind)</h2>
+  <div class="flex flex-wrap gap-2 mb-3 text-xs uppercase tracking-wider font-semibold">
+    <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded">Worth exploring</span>
+    <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded">Mock (mpv API)</span>
+    <span class="text-slate-400">Lines L1217–L1329 + 4 subclasses</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">Before — base class, shallow lifecycle</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef shallow fill:#fef3c7,stroke:#d97706
+
+  Page:::shallow --> EP[EncodeWithProgress]
+  Page --> CP[CropPage]
+  Page --> OP[EncodeOptionsPage]
+  Page --> PP[PreviewPage]
+  Page --> MP[MainPage]
+  Page -- "show/hide direct\nmpv calls" --> mpv[(mpv API)]:::shallow
+      </div>
+    </div>
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">After — page_manager seam over mpv bindings</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef deep fill:#d1fae5,stroke:#059669
+
+  pages[All Pages] --> PM[page_manager\nshow&#40;page&#41;\nhide&#40;page&#41;\ntransition&#40;from, to&#41;]
+  PM -- "adapter" --> mpv[(mpv API)]
+  PM:::deep
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Lifecycle coupling — Before</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-amber-200 w-10" style="height:40%"></div>
+        <div class="bg-amber-200 w-10" style="height:40%"></div>
+        <div class="bg-amber-200 w-10" style="height:40%"></div>
+        <div class="bg-amber-200 w-10" style="height:40%"></div>
+        <div class="bg-amber-200 w-10" style="height:40%"></div>
+      </div>
+      <p class="text-xs text-slate-400 mt-1">5 pages each calling mpv directly</p>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Lifecycle coupling — After</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-emerald-300 w-16" style="height:50%"></div>
+        <div class="bg-slate-300 w-16" style="height:60%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-16 text-center text-slate-500">1 manager</span>
+        <span class="w-16 text-center text-slate-500">mpv adapter</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-sm mb-2"><strong>Problem:</strong> Each of 5 Page subclasses calls mpv.add_forced_key_binding, mp.remove_key_binding, mp.observe_property, and mp.unobserve_property directly — PreviewPage timing bug (FIND-010) results from no ownership enforcement.</p>
+  <p class="text-sm mb-3"><strong>Solution:</strong> A page_manager module owns show/hide/transition logic, enforcing ownership rules so only one page holds key bindings at a time.</p>
+  <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
+    <li>FIND-010 timing bug centralized</li>
+    <li>Depth: keybind ownership behind seam</li>
+    <li>One adapter over mpv key-binding API</li>
+    <li>Locality: page transition logic in one module</li>
+  </ul>
+</article>
+
+<!-- CARD 7: IPC/options interface -->
+<article class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 mb-6">
+  <h2 class="text-lg font-bold mb-2">7. Deepen IPC options interface</h2>
+  <div class="flex flex-wrap gap-2 mb-3 text-xs uppercase tracking-wider font-semibold">
+    <span class="bg-slate-200 text-slate-700 px-2 py-1 rounded">Speculative</span>
+    <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded">Ports &amp; Adapters</span>
+    <span class="text-slate-400">Lines L67–L74 (8 lines)</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">Before — no-validation passthrough</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef leak stroke:#ef4444,stroke-width:2px,color:#ef4444
+
+  IPC([external script]) -- "JSON blob" --> TSO[test_set_options\nno validation]:::leak
+  TSO -- "overwrites any key" --> OPT[(options global)]:::leak
+      </div>
+    </div>
+    <div class="diagram-col">
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">After — validated options seam</p>
+      <div class="mermaid text-xs">
+flowchart LR
+  classDef deep fill:#d1fae5,stroke:#059669
+
+  IPC([external script]) -- "JSON blob" --> VS[options_ipc\nset&#40;json&#41;]
+  VS -- "whitelist validated" --> OPT[(options global)]
+  VS:::deep
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">IPC surface — Before</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-red-200 w-20" style="height:5%"></div>
+        <div class="bg-red-300 w-20" style="height:70%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-20 text-center text-slate-500">No guard</span>
+        <span class="w-20 text-center text-slate-500">Full options exposed</span>
+      </div>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">IPC surface — After</p>
+      <div class="flex items-end gap-1 h-16">
+        <div class="bg-emerald-300 w-20" style="height:30%"></div>
+        <div class="bg-slate-300 w-20" style="height:40%"></div>
+      </div>
+      <div class="flex gap-1 text-xs mt-1">
+        <span class="w-20 text-center text-slate-500">Whitelist seam</span>
+        <span class="w-20 text-center text-slate-500">Safe subset only</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-sm mb-2"><strong>Problem:</strong> test_set_options is an 8-line no-validation passthrough (FIND-006) — any external script-message can overwrite arbitrary keys including internal ones, with no seam to enforce contract.</p>
+  <p class="text-sm mb-3"><strong>Solution:</strong> Wrap in an options_ipc module that validates keys against a whitelist before writing to the options table.</p>
+  <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
+    <li>Seam prevents arbitrary key injection</li>
+    <li>Depth: validation logic hidden from caller</li>
+    <li>Speculative: low ROI (single call site)</li>
+    <li>One real adapter (mpv script-message)</li>
+  </ul>
+</article>
+
+<!-- TOP RECOMMENDATION -->
+<section class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mt-8">
+  <h2 class="text-xl font-bold mb-4 text-emerald-900">Top Recommendation</h2>
+  <div class="space-y-3">
+    <div class="flex items-start gap-3">
+      <span class="bg-emerald-600 text-white text-xs font-bold px-2 py-1 rounded mt-0.5">#1</span>
+      <div>
+        <p class="font-semibold">Explicit format registry seam (Candidate 2)</p>
+        <p class="text-sm text-slate-700">This is the smallest change with the highest defect impact — it directly fixes FIND-002 (the nil crash that blocks the primary user workflow) and FIND-003 at a single seam, while establishing the first explicit interface in a codebase that currently has none.</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-3">
+      <span class="bg-emerald-500 text-white text-xs font-bold px-2 py-1 rounded mt-0.5">#2</span>
+      <div>
+        <p class="font-semibold">Deepen encode() pipeline (Candidate 1)</p>
+        <p class="text-sm text-slate-700">The 189-line encode() function is the central maintenance liability — it fails the deletion test badly (every concern reappears in the same place), contains the FIND-001 bitrate bug, and cannot be tested without a live mpv process; a 3-entry seam would immediately improve all three problems.</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-3">
+      <span class="bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded mt-0.5">#3</span>
+      <div>
+        <p class="font-semibold">Subprocess execution module (Candidate 3)</p>
+        <p class="text-sm text-slate-700">Three real adapters already exist, satisfying the two-adapter rule for a real seam; tackle after the encode() pipeline split since the subprocess choice currently lives inside encode().</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="mt-8 text-xs text-slate-400 border-t border-slate-100 pt-4">
+  Generated 2026-11-15 &nbsp;·&nbsp; webm.lua sha256:3f454dc0ca030b591d659f7405a3ddfdf7585e5b5eb4cd5b3a573b4151b33214
+</footer>
+
+</body>
+</html>

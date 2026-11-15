@@ -1,0 +1,20 @@
+--- a/scripts/webm.lua
++++ b/scripts/webm.lua
+@@ -2363,7 +2363,13 @@ EncodeOptionsPage = ...
+ -- FIND-002 ANALYSIS: formats["raw"] IS registered at L863 as RawVideo().
+ -- The formatIds list at L2363-2371 correctly includes "raw", and the
+ -- formats table has a matching entry. No crash condition exists in the
+--- canonical file for this bug as originally reported.
++-- canonical file for this bug as originally reported.
++--
++-- However, the options.output_format default value ("mp4 (h264/AAC)" at L17)
++-- does NOT match any formats key — the registry key is "mp4" not "mp4 (h264/AAC)".
++-- This is FIND-003 (medium severity, also confirmed).
++--
++-- If a future refactor removes the RawVideo registration (L863), the fix is
++-- to either (a) keep formats["raw"] = RawVideo() or (b) remove "raw" from formatIds.
++-- Option (a) is correct — Raw AVI export is a legitimate feature.
++--
+ -- NO CODE CHANGE REQUIRED for FIND-002 in canonical/webm.lf.lua.
+ -- The finding's claim ("never registered") is factually incorrect for this
+ -- compiled output. Patch is a no-op / documentation only.
