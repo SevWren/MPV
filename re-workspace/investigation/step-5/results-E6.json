@@ -1,0 +1,68 @@
+{
+  "experiment_id": "E6",
+  "execution_environment": "mock_harness",
+  "timeout_seconds": 30,
+  "command_array": [
+    "mpv",
+    "--no-config",
+    "--load-scripts=no",
+    "--keep-open=no",
+    "--loop-playlist=no",
+    "--hwdec=no",
+    "--save-position-on-quit=no",
+    "D:\\Videos\\Rockford_High-School-Marching-Band-2026-BOA-Grand-National-Championships-Prelimi_001_1080p.mp4",
+    "--start=0:00:00.567",
+    "--end=0:00:01.469",
+    "--loop-file=no",
+    "--no-pause",
+    "--ovc=libx264",
+    "--oac=aac",
+    "--vid=1",
+    "--aid=1",
+    "--sid=no",
+    "--sub-ass-override=force",
+    "--sub-auto=fuzzy",
+    "--sub-pos=97.000000",
+    "--sub-delay=0.000000",
+    "--video-rotate=0",
+    "--ytdl-format=bv*[height<=1080]+ba/b[height<=1080]",
+    "--deinterlace=no",
+    "--vf-add=lavfi-scale=-2:720",
+    "--vf-add=lavfi-eq=contrast=1:saturation=1:brightness=0",
+    "--ovcopts-add=b=86939k",
+    "--o=D:\\ProgramData\\asus/Rockford_High-School-Marching-Band-2026-BOA-Grand-National-Championships-Prelimi_001_1080p-[00.00.567-00.01.469]-audio.mp4"
+  ],
+  "static_analysis": {
+    "has_no_config": true,
+    "has_load_scripts_no": true,
+    "has_keep_open_no": true,
+    "has_loop_playlist_no": true,
+    "has_hwdec_no": true,
+    "has_save_position_no": true,
+    "bare_tokens": [],
+    "output_path": "D:\\ProgramData\\asus/Rockford_High-School-Marching-Band-2026-BOA-Grand-National-Championships-Prelimi_001_1080p-[00.00.567-00.01.469]-audio.mp4",
+    "input_path": "D:\\Videos\\Rockford_High-School-Marching-Band-2026-BOA-Grand-National-Championships-Prelimi_001_1080p.mp4",
+    "extra_positional_args": []
+  },
+  "prediction": {
+    "predicted_timed_out": false,
+    "predicted_output_valid": true,
+    "reasons": [
+      "CLEAN: No bare tokens, --no-config present, --keep-open=no present."
+    ]
+  },
+  "timed_out": false,
+  "exit_code": 0,
+  "output_file_exists": true,
+  "output_file_size_bytes": 50000,
+  "output_file_size_after_kill_bytes": 50000,
+  "moov_atom_present": true,
+  "cpu_samples": [
+    85.0,
+    90.0,
+    20.0
+  ],
+  "stdout": "",
+  "stderr": "",
+  "notes": "MOCK RESULT \u2014 static analysis only. Real mpv not available in sandbox. Reasons: CLEAN: No bare tokens, --no-config present, --keep-open=no present."
+}

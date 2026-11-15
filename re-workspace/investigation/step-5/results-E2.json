@@ -1,0 +1,74 @@
+{
+  "experiment_id": "E2",
+  "execution_environment": "mock_harness",
+  "timeout_seconds": 30,
+  "command_array": [
+    "mpv",
+    "--keep-open=no",
+    "D:\\Videos\\Rockford_High-School-Marching-Band-2026-BOA-Grand-National-Championships-Prelimi_001_1080p.mp4",
+    "--start=0:00:00.567",
+    "--end=0:00:01.469",
+    "--loop-file=no",
+    "--no-pause",
+    "--ovc=libx264",
+    "--oac=aac",
+    "--vid=1",
+    "--aid=1",
+    "--sid=no",
+    "--sub-ass-override=force",
+    "--sub-auto=fuzzy",
+    "--sub-pos=97.000000",
+    "--sub-delay=0.000000",
+    "--video-rotate=0",
+    "--ytdl-format=bv*[height<=1080]+ba/b[height<=1080]",
+    "--deinterlace=no",
+    "--vf-add=lavfi-scale=-2:720",
+    "--vf-add=lavfi-eq=contrast=1:saturation=1:brightness=0",
+    "--ovcopts-add=b=86939k",
+    "cq-level=28",
+    "--o=D:\\ProgramData\\asus/Rockford_High-School-Marching-Band-2026-BOA-Grand-National-Championships-Prelimi_001_1080p-[00.00.567-00.01.469]-audio.mp4"
+  ],
+  "static_analysis": {
+    "has_no_config": false,
+    "has_load_scripts_no": false,
+    "has_keep_open_no": true,
+    "has_loop_playlist_no": false,
+    "has_hwdec_no": false,
+    "has_save_position_no": false,
+    "bare_tokens": [
+      "cq-level=28"
+    ],
+    "output_path": "D:\\ProgramData\\asus/Rockford_High-School-Marching-Band-2026-BOA-Grand-National-Championships-Prelimi_001_1080p-[00.00.567-00.01.469]-audio.mp4",
+    "input_path": "D:\\Videos\\Rockford_High-School-Marching-Band-2026-BOA-Grand-National-Championships-Prelimi_001_1080p.mp4",
+    "extra_positional_args": [
+      [
+        22,
+        "cq-level=28"
+      ]
+    ]
+  },
+  "prediction": {
+    "predicted_timed_out": true,
+    "predicted_output_valid": false,
+    "reasons": [
+      "BARE_TOKEN: 'cq-level=28' has no '--' prefix \u2014 mpv interprets it as a second input file path.",
+      "NO_CONFIG_ABSENT: --no-config not in command. User mpv.conf loaded. keep-open=yes [log:62].",
+      "COMPOUND: bare token + keep-open=yes \u2192 indefinite hang at 0% CPU.",
+      "LOAD_SCRIPTS_NOT_DISABLED: User scripts loaded [log:155-179]."
+    ]
+  },
+  "timed_out": true,
+  "exit_code": null,
+  "output_file_exists": true,
+  "output_file_size_bytes": 0,
+  "output_file_size_after_kill_bytes": 6291456,
+  "moov_atom_present": false,
+  "cpu_samples": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "stdout": "",
+  "stderr": "",
+  "notes": "MOCK RESULT \u2014 static analysis only. Real mpv not available in sandbox. Reasons: BARE_TOKEN: 'cq-level=28' has no '--' prefix \u2014 mpv interprets it as a second input file path.; NO_CONFIG_ABSENT: --no-config not in command. User mpv.conf loaded. keep-open=yes [log:62].; COMPOUND: bare token + keep-open=yes \u2192 indefinite hang at 0% CPU.; LOAD_SCRIPTS_NOT_DISABLED: User scripts loaded [log:155-179]."
+}
